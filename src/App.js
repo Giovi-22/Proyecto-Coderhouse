@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from "./Components/NavBar";
+import ItemListContainer from "./Components/ItemListContainer";
+import {createTheme, ThemeProvider} from "@mui/material";
+import "@fontsource/roboto";
+import { grey } from "@mui/material/colors";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = createTheme({
+    palette:{
+        primary:{
+            main: "#e67070",
+            light: "#ffa19e",
+            dark:"#b04045"
+                },
+        text:{
+            primary:grey[700],
+            secondary: "#fff"
+                },
+        background:{
+            custom: "#e67070"   
+                }
+
+            },
+    typography:{
+        fontFamily: "roboto"
+                }
+});
+
+const greeting = "Este producto está a la venta";
+function App(){
+    return (
+        <ThemeProvider theme={theme} >
+            <NavBar />
+            <ItemListContainer greeting={greeting}/>
+        </ThemeProvider>
+    );
+
 }
 
 export default App;

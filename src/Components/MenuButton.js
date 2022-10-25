@@ -2,9 +2,8 @@ import React, {useState} from "react";
 import {Menu, MenuItem,Button} from "@mui/material";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-const menuItems=["Cortantes","Sellos de Acrílicos","Moldes de silicona"];
 
-function MenuButton({menuStyle, title}) {
+function MenuButton({menuStyle, title,  menuItems}) {
         const [anchorE1, setAnchorE1] = useState(null);
         const open = Boolean(anchorE1);
 

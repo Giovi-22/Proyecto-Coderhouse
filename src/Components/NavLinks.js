@@ -1,10 +1,9 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useTheme } from "@mui/material";
-import MenuButton from "./MenuButton";
 
 
-function NavLinks({href,title,menu}){
+function NavLinks({href,title}){
 
     const theme = useTheme();
     const primaryText = theme.palette.text.primary;
@@ -24,14 +23,7 @@ function NavLinks({href,title,menu}){
         };
 
     return(
-        <>
-        {menu ?
-              <MenuButton menuStyle={linkStyle} title={title} />
-              :
-              <Button sx={linkStyle} variant="text" href={href}>{title}</Button>
-        }
-        </>
-            
+              <Button sx={linkStyle} variant="text" href={href}>{title}</Button>          
     );
 }
 

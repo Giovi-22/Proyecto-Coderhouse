@@ -5,30 +5,17 @@ import CartWidget from "./CartWidget";
 import BrandLogo from "./BrandLogo";
 
 const navLinks=[
-        {titulo:"Bienvenidos",
-         url: "/Bienvenidos",
-         menu: false,
+        {titulo:"Cortantes",
+         url: "/Cortantes",
          id:1
         },
-        {titulo:"Productos",
-         url:"/Productos",
-         menu: true,
+        {titulo:"Sellos Acrílicos",
+         url:"/Sellos",
          id: 2
          },
-        {titulo:"Nosotros",
-         url:"/Nosotros",
-         menu: false,
+        {titulo:"Moldes de silicona",
+         url:"/Moldes",
          id:3
-         },
-        {titulo:"Cómo comprar",
-         url:"/Como-comprar",
-         menu: false,
-         id:4
-         },
-        {titulo:"Contacto",
-         url:"/Contacto",
-         menu: false,
-         id:5
          }
         ];
 function NavBar(){
@@ -46,7 +33,6 @@ function NavBar(){
                         <NavLinks 
                             title={value.titulo}
                             href={value.url}
-                            menu = {value.menu}
                             key={value.id}
                         />))
                     }

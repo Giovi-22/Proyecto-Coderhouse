@@ -13,7 +13,7 @@ function CartWidget(){
                 }}
                 badgeContent={3} 
                 color="primary">
-                <AddShoppingCartIcon />
+                <AddShoppingCartIcon ></AddShoppingCartIcon>
             </Badge>
         </IconButton>
     );

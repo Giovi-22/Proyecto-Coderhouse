@@ -23,9 +23,13 @@ function NavLinks({href,title}){
         };
 
     return(
-            
-              <Button sx={linkStyle} variant="text">{title}<Link to={href} /></Button>     
+            <>
+             
+              <Link style={linkStyle} to={href} >{title}</Link>
+            </>
     );
 }
 
 export default NavLinks;
+
+// <Button sx={linkStyle} variant="text"></Button>

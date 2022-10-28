@@ -4,23 +4,23 @@ import NavLinks from "./NavLinks";
 import CartWidget from "./CartWidget";
 import BrandLogo from "./BrandLogo";
 
+
 const navLinks=[
         {titulo:"Cortantes",
-         url: "/Cortantes",
+         url: "/Categorias/Cortantes",
          id:1
         },
         {titulo:"Sellos Acrílicos",
-         url:"/Sellos",
+         url:"/Categorias/Sellos",
          id: 2
          },
         {titulo:"Moldes de silicona",
-         url:"/Moldes",
+         url:"/Categorias/Moldes",
          id:3
          }
         ];
 function NavBar(){
 
-        
     return(
         <Grid component="div" container spacing={2} alignItems="center"  >
             <Grid item container lg={2} justifyContent="flex-end" >

@@ -21,7 +21,6 @@ const navLinks=[
 function NavBar(){
 
         
-
     return(
         <Grid component="div" container spacing={2} alignItems="center"  >
             <Grid item container lg={2} justifyContent="flex-end" >

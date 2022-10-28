@@ -4,6 +4,7 @@ import ItemListContainer from "./Components/ItemListContainer";
 import {createTheme, ThemeProvider} from "@mui/material";
 import "@fontsource/roboto";
 import { grey } from "@mui/material/colors";
+import { BrowserRouter } from "react-router-dom";
 
 const theme = createTheme({
     palette:{
@@ -29,10 +30,12 @@ const theme = createTheme({
 const greeting = "Este producto está a la venta";
 function App(){
     return (
-        <ThemeProvider theme={theme} >
-            <NavBar />
-            <ItemListContainer greeting={greeting}/>
-        </ThemeProvider>
+        <BrowserRouter>
+            <ThemeProvider theme={theme} >
+                <NavBar />
+                <ItemListContainer greeting={greeting}/>
+            </ThemeProvider>
+        </BrowserRouter>
     );
 
 }

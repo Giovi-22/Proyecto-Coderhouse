@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useTheme } from "@mui/material";
-import {Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function NavLinks({href,title}){
 
@@ -24,8 +24,7 @@ function NavLinks({href,title}){
 
     return(
             <>
-             
-              <Link style={linkStyle} to={href} >{title}</Link>
+              <Button sx={linkStyle} component={Link} to={href} variant="text">{title}</Button>   
             </>
     );
 }

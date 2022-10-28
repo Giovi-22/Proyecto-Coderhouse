@@ -6,17 +6,21 @@ import BrandLogo from "./BrandLogo";
 
 
 const navLinks=[
+        {titulo:"Bienvenidos",
+         url: "/",
+         id:1
+        },
         {titulo:"Cortantes",
          url: "/Categorias/Cortantes",
-         id:1
+         id:2
         },
         {titulo:"Sellos Acrílicos",
          url:"/Categorias/Sellos",
-         id: 2
+         id:3
          },
         {titulo:"Moldes de silicona",
          url:"/Categorias/Moldes",
-         id:3
+         id:4
          }
         ];
 function NavBar(){

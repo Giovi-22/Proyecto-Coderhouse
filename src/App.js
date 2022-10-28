@@ -40,6 +40,7 @@ function App(){
                     <Route path="/Categorias/Cortantes" element= <ItemListContainer greeting="Cortantes" /> />
                     <Route path="/Categorias/Sellos" element= <ItemListContainer greeting="Sellos" /> />
                     <Route path="/Categorias/Moldes" element= <ItemListContainer greeting="Moldes" /> />
+                    <Route path="/Carrito" element= <p>Carrito</p> />
                     <Route path="/*" element=<p>Ruta no encontrada</p> />
                 </Routes>  
             </ThemeProvider>

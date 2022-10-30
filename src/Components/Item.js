@@ -16,7 +16,7 @@ boxSizing: "border-box",
 "&:hover":{boxShadow:"1px 1px 3px 2px #efefef, -1px -1px 2px 1px #efefef"}
 }
 
-function CardItem({productName, productImage, productUrl}){
+function Item({productName, productImage, productUrl}){
     
     return(
         
@@ -32,8 +32,8 @@ function CardItem({productName, productImage, productUrl}){
                     sx={{marginBottom:"10px", width:"90%"}}
                 />
             <CardContent sx={{textAlign:"center"}}>
-                <Typography color="inherit" variant="h5" >{productName}</Typography>
-                <Typography variant="subtitle1" sx={{color:"#76d275"}}>En Stock</Typography>
+                <Typography color="inherit" variant="h6" >{productName}</Typography>
+                <Typography variant="subtitle1" sx={{margin:"10px 0", color:"#76d275"}}>En Stock</Typography>
             </CardContent>
             <CardActions sx={{width:"100%",marginTop:"auto"}}>
                 <Button color="primary" variant="outlined" sx={{margin:"0 auto", width:"90%"}} component={Link} to={productUrl}>Ver detalles</Button>
@@ -43,4 +43,4 @@ function CardItem({productName, productImage, productUrl}){
     );
 };
 
-export default CardItem;
+export default Item;

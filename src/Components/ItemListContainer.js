@@ -1,38 +1,38 @@
 import React, { useEffect,useState } from "react";
-import Cards from "./Cards";
+import CardItem from "./CardItem";
 import Products from "./Products";
 import {useParams} from "react-router-dom";
 
 function ItemListContainer(){
     const [products, setProducts] = useState([])
-    const {cat} = useParams();
+    const {id} = useParams();
     
     useEffect(()=>{
         let simulacionPedido = new Promise((res)=>{
             setTimeout(()=>{
             res(Products);
             }
-            ,1000);
+            ,500);
             });
             simulacionPedido
             .then((result)=>setProducts(result));
-            if(!cat){
+            if(!id){
                 simulacionPedido
                 .then((result)=>setProducts(result));
             }else{
                 simulacionPedido
                 .then((result)=>{
-                const categoria = result.filter((value)=> value.category === cat)
+                const categoria = result.filter((value)=> value.category === id)
                 setProducts(categoria);
                 }
                 );
             }
-    },[cat])
+    },[id])
 
     return (
         <div className="main">
                 <div className="itemsContainer">
-                <Cards products={products}/>
+                    {products.map((prod)=><CardItem key={prod.id} products={prod}/>)}
                 </div>               
         </div>
              

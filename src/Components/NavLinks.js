@@ -30,5 +30,3 @@ function NavLinks({href,title}){
 }
 
 export default NavLinks;
-
-// <Button sx={linkStyle} variant="text"></Button>

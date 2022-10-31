@@ -12,11 +12,11 @@ function ItemDetailContainer(){
             setTimeout(()=>{
             res(Products);
             }
-            ,1000);
+            ,500);
             });
             simulacionPedido
             .then((result)=>{
-                const resultado = result.find((value)=>value.id);
+                const resultado = result.find((value)=>value.id === id);
                 setItem(resultado);
             });
 

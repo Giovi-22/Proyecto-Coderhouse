@@ -3,6 +3,7 @@ import CardItem from "./CardItem";
 import {useParams} from "react-router-dom";
 import {getProductsByCat,getProducts} from "./Utils";
 
+
 function ItemListContainer(){
     const [products, setProducts] = useState([])
     const {id} = useParams();

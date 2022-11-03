@@ -36,7 +36,7 @@ function CardItem({products}){
                 <Typography variant="subtitle1" sx={{margin:"10px 0", color:"#76d275"}}>En Stock</Typography>
             </CardContent>
             <CardActions sx={{width:"100%",marginTop:"auto"}}>
-                <Button color="primary" variant="outlined" sx={{margin:"0 auto", width:"90%"}} component={Link} to={products.url}>Ver detalles</Button>
+                <Button color="primary" variant="outlined" sx={{margin:"0 auto", width:"90%"}} component={Link} to={"/Item/"+ products.id}>Ver detalles</Button>
             </CardActions>
         </Card>
         

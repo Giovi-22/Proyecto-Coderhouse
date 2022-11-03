@@ -1,31 +1,24 @@
 import React, { useEffect,useState } from "react";
-import Products from "./Products";
 import {useParams} from "react-router-dom";
 import ItemDetail from "./ItemDetail";
+import {getProductById} from "./Utils";
 
 function ItemDetailContainer(){
     const [item, setItem] = useState({})
     const {id} = useParams();
+
     
     useEffect(()=>{
-        let simulacionPedido = new Promise((res)=>{
-            setTimeout(()=>{
-            res(Products);
-            }
-            ,500);
-            });
-            simulacionPedido
-            .then((result)=>{
-                const resultado = result.find((value)=>value.id === id);
-                setItem(resultado);
-            });
+        getProductById(id)
+            .then(resultado=>setItem(resultado))
+            .catch(err=>console.log(err));
 
     },[id])
 
     return(
         <div className="main">
                 <div className="itemsContainer">
-                <ItemDetail product={item}/>
+                {Object.keys(item).length === 0 ?<p>Cargando...</p>:<ItemDetail product={item} />}
                 </div>               
         </div>
     );

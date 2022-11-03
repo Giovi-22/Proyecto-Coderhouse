@@ -3,6 +3,7 @@ import {Avatar} from "@mui/material";
 import { Link } from "react-router-dom";
 
 const urlLogo=process.env.PUBLIC_URL + "/Images/LogoCB-SR.svg";
+
 const avatarStyle={
     marginLeft: "20px",
     width: "75px",

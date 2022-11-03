@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import NavLinks from "./NavLinks";
 import CartWidget from "./CartWidget";
 import BrandLogo from "./BrandLogo";
@@ -26,6 +26,7 @@ const navLinks=[
 function NavBar(){
 
     return(
+        <Paper elevation={4}>
         <Grid component="div" container spacing={2} alignItems="center"  >
             <Grid item container lg={2} justifyContent="flex-end" >
                 <BrandLogo />
@@ -45,6 +46,7 @@ function NavBar(){
                 <CartWidget />
             </Grid>
         </Grid>
+        </Paper>
             );
 }
 

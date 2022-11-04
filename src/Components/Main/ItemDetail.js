@@ -36,7 +36,6 @@ const cantidadStyle={
     alignItem:"center",
 }
 function ItemDetail({product}){
-   
 
     return (
         <div style={itemdetailStyle}>
@@ -48,7 +47,7 @@ function ItemDetail({product}){
                     <Typography color="inherit" variant="body1" >{product.description}</Typography>
                 <div style={cantidadStyle}>
                     <Typography gutterTop color="inherit" variant="h6" >Cantidad</Typography>
-                    <ItemCount />
+                    <ItemCount stock={product.stock}/>
                 </div>
                     <Typography color="inherit" variant="h3" sx={{alignSelf:"center"}} >${product.price}</Typography>
                     <Button color="primary" variant="outlined" sx={{alignSelf:"center"}}><ShoppingCartIcon />AGREGAR AL CARRITO</Button>   

@@ -1,15 +1,21 @@
-import React from "react";
-import NavBar from "./Components/NavBar";
-import ItemListContainer from "./Components/ItemListContainer";
+import React, { createContext, useState } from "react";
+import NavBar from "./Components/Header/NavBar";
 import {createTheme, ThemeProvider} from "@mui/material";
 import "@fontsource/roboto";
 import { grey } from "@mui/material/colors";
-import {Route,Routes} from "react-router-dom";
 import { BrowserRouter} from "react-router-dom";
-import ItemDetailContainer from "./Components/ItemDetailContainer";
-
+import Main from "./Components/Main/Main";
 
 const theme = createTheme({
+    breakpoints:{
+        values:{
+            xs:0,
+            sm:670,
+            md:900,
+            lg:1200,
+            xl:1536
+        }
+    },
     palette:{
         primary:{
             main: "#e67070",
@@ -30,22 +36,25 @@ const theme = createTheme({
                 }
 });
 
-function App(){
+const context = createContext();
 
+function App(){
+    const [count,setCount] = useState();
+    let {Provider} = context;
+    Provider = {
+        count: count,
+        setCount: setCount
+    }
 
     return (
-        <BrowserRouter>
-            <ThemeProvider theme={theme} >
-                <NavBar />
-                <Routes>
-                    <Route path="/" element=<ItemListContainer />/>
-                    <Route path="/Categorias/:id" element= <ItemListContainer /> />
-                    <Route path="/Item/:id" element=<ItemDetailContainer /> />
-                    <Route path="/Carrito" element= <p>Carrito</p> />
-                    <Route path="/*" element=<p>Ruta no encontrada</p> />
-                </Routes>  
-            </ThemeProvider>
-        </BrowserRouter>
+        
+            <BrowserRouter>
+                <ThemeProvider theme={theme} >
+                    <NavBar />
+                    <Main />
+                </ThemeProvider>
+            </BrowserRouter>
+
     );
 
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {Paper, useMediaQuery } from "@mui/material";
+import {useMediaQuery } from "@mui/material";
 import NavLinks from "./NavLinks";
 import CartWidget from "./CartWidget";
 import BrandLogo from "./BrandLogo";
@@ -33,7 +33,7 @@ function NavBar(){
     const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
 
     return(
-        <Paper elevation={2} className="navBar">
+        <div className="navBar">
             <div className="gridItem-logo">
                 <BrandLogo />
             </div>
@@ -52,7 +52,7 @@ function NavBar(){
             <div className="gridItem-cartWidget">
                 <CartWidget />
             </div>
-        </Paper>
+        </div>
             );
 }
 

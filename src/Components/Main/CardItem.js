@@ -15,6 +15,13 @@ flexDirection: "column",
 boxSizing: "border-box",
 "&:hover":{boxShadow:"1px 1px 3px 2px #efefef, -1px -1px 2px 1px #efefef"}
 }
+const imageStyle={
+    marginBottom:"15px", 
+    width:"auto",
+    height:"auto",
+    maxWidth: "150px",
+    maxHeight: "150px"
+}
 
 function CardItem({products}){
     
@@ -23,7 +30,7 @@ function CardItem({products}){
         <Card sx={cardStyle} variant="outlined">
                 <img 
                 src= {products.image}
-                style={{marginBottom:"15px", width:"150px",height:"150px"}}
+                style={imageStyle}
                 alt="Imagen de producto"
                 />
 

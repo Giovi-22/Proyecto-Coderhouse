@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import {IconButton,Badge} from "@mui/material/";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {Link} from "react-router-dom"
+import {context} from "../../App";
+
 
 function CartWidget(){
+    const valorDelContexto = useContext(context);
 
     return(
         <IconButton LinkComponent={Link} to="/Carrito">
@@ -11,7 +14,7 @@ function CartWidget(){
                 vertical: 'bottom',
                 horizontal: 'right',
                 }}
-                badgeContent={3} 
+                badgeContent={valorDelContexto.cuantity} 
                 color="primary">
                 <AddShoppingCartIcon ></AddShoppingCartIcon>
             </Badge>

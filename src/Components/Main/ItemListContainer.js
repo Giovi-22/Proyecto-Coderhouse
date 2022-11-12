@@ -7,6 +7,7 @@ import {getProductsByCat,getProducts} from "../Utils/Utils";
 function ItemListContainer(){
     const [products, setProducts] = useState([])
     const {id} = useParams();
+    
     useEffect(()=>{
             setProducts([]);
        if(id !== "Productos"){

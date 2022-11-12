@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import {Typography,IconButton} from "@mui/material";
 import { useTheme } from "@mui/material";
 
 
-function ItemCount({stock, setsumaCount}){
+function ItemCount({stock, onCount}){
     const [count,setCount]=useState(1);
     const theme = useTheme();
     const bColor = theme.palette.grey[300];
@@ -23,13 +23,19 @@ function ItemCount({stock, setsumaCount}){
 }
 
     function handleSuma(){
+        if(count <= stock){
             setCount(count + 1);
+        }  
     }
     function handleResta(){
+        if(count > 1){
             setCount(count - 1);
+        }      
         }
         
-
+    useEffect(()=>{
+        onCount(count);
+    },[count])
 
     return(
         <div style={itemCountStyle}>

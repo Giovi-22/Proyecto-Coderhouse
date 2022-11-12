@@ -25,4 +25,8 @@ export function getProductsByCat(cat,time=1000){
         return simulacionPedido;
 
 }
+
+export function addProductToContext(products, item){   
+                
+}
     

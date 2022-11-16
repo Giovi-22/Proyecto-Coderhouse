@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import {IconButton,Badge} from "@mui/material/";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {Link} from "react-router-dom"
-import {context} from "../../App";
+import {context} from "../../CustomProvider";
 
 
 function CartWidget(){

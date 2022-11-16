@@ -1,9 +1,9 @@
-import React, {useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import { Typography } from "@mui/material";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {context} from "../../App";
+import { context } from "../../CustomProvider";
 
 const itemdetailStyle={
             display: "flex",
@@ -50,19 +50,20 @@ function ItemDetail({product}){
     const valorDelContexto = useContext(context);
 
     function handleCount(count){
-        let cantidad = count;
-        let sTotal = producto.price * count;
-        setProducto((prevValue)=> ({...prevValue,cantidad:cantidad,subTotal:sTotal}));     
+        let sTotal = 0;
+        setProducto((prevValue)=> ({...prevValue,cantidad:count,subTotal:(prevValue.price * count)}));  
+        sTotal = producto.price * count;
+        setSTotal(sTotal.toFixed(2));   
     }
 
     function addToContext(){
-        valorDelContexto.setProducts(producto)
+            if(isNaN(producto.cantidad)){
+                valorDelContexto.addProducts({...producto,cantidad:1}); 
+            }else{
+                valorDelContexto.addProducts(producto);
+            }
+             
     }
-
-    useEffect(()=>{
-        let sTotal = producto.price * producto.cantidad;
-        setSTotal(sTotal.toFixed(2));
-    },[producto.cantidad]);
 
     return (
         <div style={itemdetailStyle}>
@@ -74,7 +75,7 @@ function ItemDetail({product}){
                     <Typography color="inherit" variant="body1" >{product.description}</Typography>
                 <div style={countStyle}>
                     <Typography gutterTop color="inherit" variant="h6" >Cantidad</Typography>
-                    <ItemCount stock={product.stock} onCount={handleCount}/>
+                    <ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad}/>
                 </div>
                     <Typography color="inherit" variant="h3" sx={{alignSelf:"center"}} >${product.price}</Typography>
                     {producto.cantidad > 1 ? <Typography color="#3333337a" variant="h6" sx={{alignSelf:"center"}} >SUBTOTAL ${subtotal}</Typography> : null }

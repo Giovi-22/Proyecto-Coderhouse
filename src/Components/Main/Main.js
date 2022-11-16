@@ -9,7 +9,7 @@ function Main(){
 
 
     return(
-            <div className="main">
+            <main className="main">
                 <Routes>
                     <Route path="/" element=<Bienvenidos />/>
                     <Route path="/:id" element=<ItemListContainer />/>
@@ -18,7 +18,7 @@ function Main(){
                     <Route path="/Carrito" element= <CheckoutContainer /> />
                     <Route path="/*" element=<p>Ruta no encontrada</p> />
                 </Routes>  
-            </div>
+            </main>
 
     );
 

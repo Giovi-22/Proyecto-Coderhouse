@@ -5,8 +5,8 @@ import {Typography,IconButton} from "@mui/material";
 import { useTheme } from "@mui/material";
 
 
-function ItemCount({stock, onCount}){
-    const [count,setCount]=useState(1);
+function ItemCount({stock, onCount, cuantity=1}){
+    const [count,setCount]=useState(cuantity);
     const theme = useTheme();
     const bColor = theme.palette.grey[300];
 
@@ -25,17 +25,20 @@ function ItemCount({stock, onCount}){
     function handleSuma(){
         if(count <= stock){
             setCount(count + 1);
-        }  
+            onCount(count + 1);  
+        }
+
     }
     function handleResta(){
         if(count > 1){
-            setCount(count - 1);
-        }      
+            setCount(count - 1);  
+            onCount(count-1);  
+        } 
+           
         }
-        
-    useEffect(()=>{
-        onCount(count);
-    },[count])
+        useEffect(()=>{
+            //onCount(count);  
+        },[count]);
 
     return(
         <div style={itemCountStyle}>

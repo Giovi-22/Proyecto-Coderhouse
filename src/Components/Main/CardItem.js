@@ -13,7 +13,12 @@ justifyContent: "center",
 alignItems: "center",
 flexDirection: "column",
 boxSizing: "border-box",
-"&:hover":{boxShadow:"1px 1px 3px 2px #efefef, -1px -1px 2px 1px #efefef"}
+borderStyle: "solid",
+borderRadius: "5px",
+borderWidth: "2px",
+borderColor: "#e6707063",
+"&:hover":{boxShadow:"1px 1px 3px 2px #e67070, -1px -1px 2px 1px #e67070"}
+
 }
 const imageStyle={
     marginBottom:"15px", 
@@ -21,6 +26,7 @@ const imageStyle={
     height:"auto",
     maxWidth: "150px",
     maxHeight: "150px"
+    
 }
 
 function CardItem({products}){
@@ -52,3 +58,7 @@ function CardItem({products}){
 
 
 export default CardItem;
+
+/*
+{boxShadow:"1px 1px 3px 2px #efefef, -1px -1px 2px 1px #efefef"}
+*/

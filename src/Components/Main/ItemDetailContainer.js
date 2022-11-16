@@ -2,6 +2,7 @@ import React, { useEffect,useState } from "react";
 import {useParams} from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import {getProductById} from "../Utils/Utils";
+import { CircularProgress } from "@mui/material";
 
 function ItemDetailContainer(){
     const [item, setItem] = useState({})
@@ -18,7 +19,7 @@ function ItemDetailContainer(){
     return(
         <div className="main">
                 <div className="itemsContainer">
-                {Object.keys(item).length === 0 ?<p>Cargando...</p>:<ItemDetail product={item} />}
+                {Object.keys(item).length === 0 ?<CircularProgress /> :<ItemDetail product={item} />}
                 </div>               
         </div>
     );

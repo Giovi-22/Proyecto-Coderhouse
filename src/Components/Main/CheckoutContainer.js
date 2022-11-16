@@ -1,20 +1,28 @@
-import React,{useContext, useEffect, useState} from "react";
-import {context} from "../../App";
+import React,{ useContext, useEffect, useState } from "react";
+import { context } from "../../CustomProvider";
 import Checkout from "./Checkout";
 import { Typography } from "@mui/material";
 
 function CheckoutContainer(){
-            const {products,deleteProduct} = useContext(context);
+            const {products,deleteProduct,updateProduct} = useContext(context);
             const [total,setTotal] =useState(0);
 
             function handleDelete(productId){
                 deleteProduct(productId);
             }
             
+            function handleCount(count,id){
+                updateProduct(count,id);
+                };
+
+
             useEffect(()=>{
                 let tot = 0;
-                products.map((value)=>tot = tot + value.subTotal);
-                setTotal(tot)
+                products.forEach(value=>{
+                    tot = tot + (value.price * value.cantidad);
+                    value.subTotal = value.price * value.cantidad;
+                });
+                setTotal(tot);
             },[products])
 
             return (
@@ -28,7 +36,7 @@ function CheckoutContainer(){
                                 
                         </div>
                         <div className="productos">
-                            {products.map((value,index)=><Checkout  key={value.id + index} product={value} onDelete={handleDelete}/>)}
+                            {products.map((value,index)=><Checkout  key={value.id + index} product={value} onDelete={handleDelete} onCount={handleCount}/>)}
                         </div>   
                         <Typography className="productTotal">Total</Typography>
                         <Typography className="total-productos">${products.length === 0 ? null : total}</Typography>
@@ -40,25 +48,3 @@ function CheckoutContainer(){
 
 
 export default CheckoutContainer;
-
-/*
- <>
-                <div className="checkoutContainer">
-                        <div className="item">
-                            <Typography >Item</Typography>
-                        </div>
-                        <div className="precio">
-                            <Typography >Precio</Typography>
-                        </div>
-                        <div className="cantidad">
-                            <Typography >Cantidad</Typography>
-                        </div>
-                        <div className="total">
-                            <Typography >Total</Typography>
-                        </div>
-                        <div className="delete">    
-                        </div>
-                    </div>
-                    {products.map((value)=><Checkout  key={value.id} product={value}/>)}
-                </> 
-    */

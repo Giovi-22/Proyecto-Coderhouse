@@ -17,7 +17,15 @@ function CustomProvider({children}){
             };
   
     function handleProducts(product){
+            const result = products.find(value=>value.id === product.id);
+            if(result){
+                console.log("un solo producto")
+                const valor = result.cantidad + product.cantidad;
+                updateProduct(valor,product.id);
+            }else{
+                console.log("mas de un producto")
                 setProducts([...products,product]); 
+            }
     }  
 
     function handleDelete(productId){

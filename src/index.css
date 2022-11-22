@@ -61,19 +61,18 @@ body {
 }
 
 .checkoutContainer, .productItem{
-    margin: 20px 30px 0 30px;
+    padding: 0 5px;
     width: 100%;
     align-self: start;
     display: grid;
-    grid-template-columns: 60% 10% 10% 10% 10%;
-    grid-template-rows: 40px auto 60px;
+    grid-template-columns: 60% 10% 15% 10% 5%;
+    grid-template-rows: 40px auto 60px 40px;
     grid-template-areas: 
     "cell1 cell2 cell3 cell4 cell5" 
     "productos productos productos productos productos"
     ". total . total-productos .";
     justify-items: start;
     align-items: center;
-    border-bottom: 1px solid #e1e2e2;
 }
 
 .productos{
@@ -86,6 +85,7 @@ body {
   grid-template-rows: 50px;
   justify-items: start;
   align-items: center;
+  border-bottom: 1px solid #e1e2e2;
 }
 
 .productTotal{
@@ -94,34 +94,36 @@ body {
 .total-productos{
   grid-area: total-productos;
 }
+.btn-continuarcompra{
+ align-self: flex-end;
+ margin: 0 30px 30px 0;
+}
 
 
 .containerFooter{
-  width: 100vw;
+  width: 100%;
   height: 300px;
   margin-top: 10px;
   display: grid;
-  grid-template-columns: 30% auto 30%;
+  grid-template-columns: 50% 50%;
   grid-template-rows: auto 30px;
   grid-template-areas: 
-                      "links redes contact" 
-                      ". copyright .";
+                      "links  contact" 
+                      " copyright copyright";
   background-color: black;
   
 }
 .footerLinks, .footerContact{
   grid-area: links;
   margin-top: 10px;
-  padding-left: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: ;
 
 }
 .footerContact{
   grid-area: contact;
-  padding:0;
 }
 .footerRedes{
   grid-area: redes;
@@ -142,4 +144,24 @@ body {
   .navBar{
     grid-template-columns: [logo]100px [navLinks]auto [cartWidget]60px;
   }
+  .checkoutContainer, .productItem{
+    margin: 20px 5px 0 5px;
+    grid-template-columns: 30% 20% 20% 20% 10%;
+    justify-items: center;
+}
+.containerFooter{
+  grid-template-columns: 40% 60%;
+}
+.footerLinks, .footerContact{
+  justify-content: center;
+  align-items: flex-start;
+}Total
+.main{
+  min-height: 100vh;
+  width: 100vw;
+  padding: 85px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }

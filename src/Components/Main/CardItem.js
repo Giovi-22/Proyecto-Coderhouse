@@ -14,10 +14,10 @@ alignItems: "center",
 flexDirection: "column",
 boxSizing: "border-box",
 borderStyle: "solid",
-borderRadius: "5px",
-borderWidth: "2px",
+borderRadius: "15px",
+borderWidth: "5px",
 borderColor: "#e6707063",
-"&:hover":{boxShadow:"1px 1px 3px 2px #e67070, -1px -1px 2px 1px #e67070"}
+"&:hover":{boxShadow:"1px 1px 6px 1px #e6707063, -1px -1px 6px 1px #e6707063"}
 
 }
 const imageStyle={
@@ -35,7 +35,7 @@ function CardItem({products}){
         
         <Card sx={cardStyle} variant="outlined">
                 <img 
-                src= {products.image}
+                src= {process.env.PUBLIC_URL + products.image}
                 style={imageStyle}
                 alt="Imagen de producto"
                 />
@@ -49,7 +49,7 @@ function CardItem({products}){
                 <Typography variant="subtitle1" sx={{margin:"10px 0", color:"#76d275"}}>En Stock</Typography>
             </CardContent>
             <CardActions sx={{width:"100%",marginTop:"auto"}}>
-                <Button color="primary" variant="outlined" sx={{margin:"0 auto", width:"90%"}} component={Link} to={"/Item/"+ products.id}>Ver detalles</Button>
+                <Button color="primary" variant="outlined" sx={{margin:"0 auto", width:"90%"}} component={Link} to={"/item/"+ products.id}>Ver detalles</Button>
             </CardActions>
         </Card>
         

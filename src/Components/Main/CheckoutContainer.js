@@ -1,7 +1,8 @@
 import React,{ useContext, useEffect, useState } from "react";
 import { context } from "../../CustomProvider";
 import Checkout from "./Checkout";
-import { Typography } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function CheckoutContainer(){
             const {products,deleteProduct,updateProduct} = useContext(context);
@@ -26,7 +27,7 @@ function CheckoutContainer(){
             },[products])
 
             return (
-
+            <Paper elevation={1} sx={{display:"flex",flexDirection:"column",width:"90%",marginTop:"10px"}}>
                 <div className="checkoutContainer">
                         <Typography >Item</Typography>
                         <Typography >Precio</Typography>
@@ -39,8 +40,12 @@ function CheckoutContainer(){
                             {products.map((value,index)=><Checkout  key={value.id + index} product={value} onDelete={handleDelete} onCount={handleCount}/>)}
                         </div>   
                         <Typography className="productTotal">Total</Typography>
-                        <Typography className="total-productos">${products.length === 0 ? null : total}</Typography>
+                        <Typography className="total-productos">${products.length === 0 ? null : total.toFixed(2)}</Typography>
                 </div>
+                <div className="btn-continuarcompra">
+                        <Button variant="contained" color="primary" component={Link} to="/formulario">Continuar Compra</Button>
+                </div>
+            </Paper>
 
             );
 

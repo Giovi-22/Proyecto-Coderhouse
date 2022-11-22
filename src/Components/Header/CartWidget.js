@@ -9,7 +9,7 @@ function CartWidget(){
     const valorDelContexto = useContext(context);
 
     return(
-        <IconButton LinkComponent={Link} to="/Carrito">
+        <IconButton LinkComponent={Link} to="/carrito">
             <Badge anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',

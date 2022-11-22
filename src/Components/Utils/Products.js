@@ -1,21 +1,5 @@
 
 const Products= [
-
-    {   
-        name:"CB13 Sello acrílico Baby",
-        price: 332.75,
-        category:"Sellos",
-        description:"CB13 - INCLUYE 2 unidades",
-        stock:10,
-        dimensiones:{
-            Alto:"6cm",
-            Ancho:"6cm",
-            Profundidad: "1cm"
-    },
-        id:"CB13",
-        image: process.env.PUBLIC_URL + "/Images/Baby.jpeg"
-    },
-
     {
 
         name:"CB14 Sello acrílico Oso 8cm",
@@ -23,13 +7,7 @@ const Products= [
         category:"Sellos",
         description:"CB14 - INCLUYE 2 unidades",
         stock:10,
-        dimensiones:{
-            Alto:"8cm",
-            Ancho:"8cm",
-            Profundidad: "1cm"
-    },
-        id:"CB14",
-        image: process.env.PUBLIC_URL + "/Images/Oso.jpeg"
+        image: "/Images/Oso.jpeg"
 
     },
     {
@@ -38,13 +16,7 @@ const Products= [
         category: "Sellos",
         description:"CB15 - INCLUYE 1 unidad",
         stock:10,
-        dimensiones:{
-                Alto:"8cm",
-                Ancho:"8cm",
-                Profundidad: "1cm"
-        },
-        id:"CB15",
-        image:process.env.PUBLIC_URL + "/Images/Caballo-mecedor.jpeg"
+        image:"/Images/Caballo-mecedor.jpeg"
     },
     {   
         name:"CB16 Cortante Pelota de basquet",
@@ -52,13 +24,7 @@ const Products= [
         category:"Cortantes",
         description:"CB16 - INCLUYE 2 unidades",
         stock:10,
-        dimensiones:{
-            Alto:"6cm",
-            Ancho:"6cm",
-            Profundidad: "1cm"
-    },
-        id:"CB16",
-        image: process.env.PUBLIC_URL + "/Images/Pelota-basquet.jpeg"
+        image: "/Images/Pelota-basquet.jpeg"
     },
 
     {
@@ -68,13 +34,7 @@ const Products= [
         category:"Cortantes",
         description:"CB17 - INCLUYE 1 unidades",
         stock:10,
-        dimensiones:{
-            Alto:"8cm",
-            Ancho:"8cm",
-            Profundidad: "1cm"
-    },
-        id:"CB17",
-        image: process.env.PUBLIC_URL + "/Images/Cupcake.jpeg"
+        image:"/Images/Cupcake.jpeg"
 
     },
     {
@@ -83,13 +43,7 @@ const Products= [
         category: "Cortantes",
         description:"CB18 - INCLUYE 2 unidades",
         stock:10,
-        dimensiones:{
-            Alto:"8cm",
-            Ancho:"8cm",
-            Profundidad: "1cm"
-    },
-        id:"CB18",
-        image:process.env.PUBLIC_URL + "/Images/Llama.jpeg"
+        image:"/Images/Llama.jpeg"
     },
     {   
         name:"CB19 Molde de silicona Minnie",
@@ -97,13 +51,7 @@ const Products= [
         category:"Moldes",
         description:"CB19 - INCLUYE 1 unidades",
         stock:10,
-        dimensiones:{
-            Alto:"12cm",
-            Ancho:"12cm",
-            Profundidad: "1cm"
-    },
-        id:"CB19",
-        image: process.env.PUBLIC_URL + "/Images/Minnie.png"
+        image:"/Images/Minnie.png"
     },
 
     {
@@ -113,13 +61,7 @@ const Products= [
         category:"Moldes",
         description:"CB20 - INCLUYE 1 unidades",
         stock:10,
-        dimensiones:{
-            Alto:"12cm",
-            Ancho:"12cm",
-            Profundidad: "1cm"
-    },
-        id:"CB20",
-        image: process.env.PUBLIC_URL + "/Images/Varios.png"
+        image:"/Images/Varios.png"
 
     },
     {
@@ -128,13 +70,7 @@ const Products= [
         category: "Moldes",
         description:"CB21 - INCLUYE 1 unidad",
         stock:10,
-        dimensiones:{
-            Alto:"12cm",
-            Ancho:"12cm",
-            Profundidad: "1cm"
-    },
-        id:"CB21",
-        image:process.env.PUBLIC_URL + "/Images/Corazones.png"
+        image:"/Images/Corazones.png"
     }
 ];
 

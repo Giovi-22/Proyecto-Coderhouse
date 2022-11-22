@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import ItemCount from "./ItemCount";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { context } from "../../CustomProvider";
+
 
 const itemdetailStyle={
             display: "flex",
@@ -43,27 +43,10 @@ const countStyle={
     alignItem:"center",
 }
 
-function ItemDetail({product}){
-    const [producto, setProducto] = useState(product);
-    const [subtotal, setSTotal] = useState("");
+function ItemDetail({product,onCount,addToContext}){
 
-    const valorDelContexto = useContext(context);
 
-    function handleCount(count){
-        let sTotal = 0;
-        setProducto((prevValue)=> ({...prevValue,cantidad:count,subTotal:(prevValue.price * count)}));  
-        sTotal = producto.price * count;
-        setSTotal(sTotal.toFixed(2));   
-    }
 
-    function addToContext(){
-            if(isNaN(producto.cantidad)){
-                valorDelContexto.addProducts({...producto,cantidad:1}); 
-            }else{
-                valorDelContexto.addProducts(producto);
-            }
-             
-    }
 
     return (
         <div style={itemdetailStyle}>
@@ -75,11 +58,11 @@ function ItemDetail({product}){
                     <Typography color="inherit" variant="body1" >{product.description}</Typography>
                 <div style={countStyle}>
                     <Typography gutterTop color="inherit" variant="h6" >Cantidad</Typography>
-                    <ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad}/>
+                    <ItemCount stock={product.stock} onCount={(count)=>onCount(count)} cuantity={product.cantidad}/>
                 </div>
                     <Typography color="inherit" variant="h3" sx={{alignSelf:"center"}} >${product.price}</Typography>
-                    {producto.cantidad > 1 ? <Typography color="#3333337a" variant="h6" sx={{alignSelf:"center"}} >SUBTOTAL ${subtotal}</Typography> : null }
-                    <Button onClick={addToContext} color="primary" variant="outlined" sx={{alignSelf:"center"}}><ShoppingCartIcon />AGREGAR AL CARRITO</Button>   
+                    {product.cantidad > 1 ? <Typography color="#3333337a" variant="h6" sx={{alignSelf:"center"}} >SUBTOTAL ${product.subTotal.toFixed(2)}</Typography> : null }
+                    <Button onClick={()=>addToContext()} color="primary" variant="outlined" sx={{alignSelf:"center"}}><ShoppingCartIcon />AGREGAR AL CARRITO</Button>   
             </div>
         </div>
 

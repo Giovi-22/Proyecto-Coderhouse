@@ -12,10 +12,7 @@ function Footer(){
     return (
             <footer className="containerFooter">
                    <div className="footerLinks">
-                        {navLinks.map((value)=><FooterLinks href={value.url} title={value.titulo} />)}
-                   </div>
-                   <div className="footerRedes">
-                            <RedesSociales />
+                        {navLinks.map((value)=><FooterLinks key={value.id} href={value.url} title={value.titulo} />)}
                    </div>
                    <div className="footerContact">
                         {socialLinks.map((value)=><FooterLinks key={value.id} href={value.url} icon={value.icon} title={value.titulo} />)}

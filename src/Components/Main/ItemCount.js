@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import {Typography,IconButton} from "@mui/material";
@@ -8,14 +8,14 @@ import { useTheme } from "@mui/material";
 function ItemCount({stock, onCount, cuantity=1}){
     const [count,setCount]=useState(cuantity);
     const theme = useTheme();
-    const bColor = theme.palette.grey[300];
+    const bColor = theme.palette.primary.light;
 
 
     const itemCountStyle={
-        width:"100px",
-        border:"1px solid",
+        width: "90px",
+        border:"3px solid",
         borderColor: bColor,
-        borderRadius: "5px",
+        borderRadius: "10px",
         display:"flex",
         justifyContent:"space-between",
         alignItems:"center"
@@ -36,9 +36,6 @@ function ItemCount({stock, onCount, cuantity=1}){
         } 
            
         }
-        useEffect(()=>{
-            //onCount(count);  
-        },[count]);
 
     return(
         <div style={itemCountStyle}>

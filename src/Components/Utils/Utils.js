@@ -1,36 +1,37 @@
-import Products from "./Products";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import MailIcon from '@mui/icons-material/Mail';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { db } from "../Firebase/Firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 
-const tiempo = 2000;
+const productsCollection = collection(db,"productos");
+
+
+const tiempo = 500;
 //--------------------FUNCTIONS----------------------------------
-export function getProducts(time=tiempo){
-        let simulacionPedido = new Promise((res)=>{
-        setTimeout(()=>{
-            res(Products)},time);
-        });
-        return simulacionPedido;
+export function getProducts(){
+        const consulta = getDocs(productsCollection);
+        return consulta;
 }
 
-export function getProductById(id,time=tiempo){
-    let simulacionPedido = new Promise((res)=>{
-        setTimeout(()=>{
-            res(Products.find(value=>value.id===id))},time);
-        });
-        return simulacionPedido;
+export function getProductById(id){
+    const ref = doc(productsCollection,id);
+    const resultado = getDoc(ref);
+    return resultado;
+
 }
 
 export function getProductsByCat(cat,time=tiempo){
-    let simulacionPedido = new Promise((res)=>{
-        setTimeout(()=>{
-            res(Products.filter((value)=>value.category === cat))},time);
-        });
+    const consulta = query(productsCollection,where("category","==",cat));
+    const resultado = getDocs(consulta);
+    return resultado;
+}
 
-        return simulacionPedido;
-
+export function addProducts(products){
+        const response = products.map(producto=>addDoc(productsCollection,producto));
+        return response;
 }
 
 export function addProductToContext(products, item){   
@@ -45,19 +46,19 @@ export const navLinks=[
      id:1
     },
     {titulo:"Productos",
-     url: "/Productos",
+     url: "/productos",
      id:5
     },
     {titulo:"Cortantes",
-     url: "/Categorias/Cortantes",
+     url: "/categorias/cortantes",
      id:2
     },
     {titulo:"Sellos Acrílicos",
-     url:"/Categorias/Sellos",
+     url:"/categorias/sellos",
      id:3
      },
     {titulo:"Moldes de silicona",
-     url:"/Categorias/Moldes",
+     url:"/categorias/moldes",
      id:4
      }
     ];

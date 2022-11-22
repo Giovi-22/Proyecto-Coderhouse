@@ -10,16 +10,21 @@ function ItemListContainer(){
     
     useEffect(()=>{
             setProducts([]);
-       if(id !== "Productos"){
+       if(id !== "productos"){
             getProductsByCat(id)
-                .then(value=>setProducts(value))
+                .then(doc=>{
+                    const result = doc.docs.map(value =>({...value.data(),id:value.id}));
+                    setProducts(result);
+                })
                 .catch(err=>console.log(err));
        }
        else{
             getProducts()
-                .then(value=>setProducts(value))
-                .catch(err=>console.log(err));
-                
+                .then(result=>{
+                    const resultado = result.docs.map(doc =>({...doc.data(),id:doc.id}));
+                    setProducts(resultado);
+                })
+                .catch(err=>console.log(err));      
        }
     },[id])
 

@@ -12,6 +12,7 @@ function CustomProvider({children}){
         addProducts: handleProducts,
         deleteProduct: handleDelete,
         updateProduct:updateProduct,
+        vaciarCarrito:vaciarCarrito,
         cuantity:count,
         products: products
             };
@@ -19,11 +20,10 @@ function CustomProvider({children}){
     function handleProducts(product){
             const result = products.find(value=>value.id === product.id);
             if(result){
-                console.log("un solo producto")
                 const valor = result.cantidad + product.cantidad;
                 updateProduct(valor,product.id);
             }else{
-                console.log("mas de un producto")
+                product.stock = product.stock - product.cantidad;
                 setProducts([...products,product]); 
             }
     }  
@@ -32,6 +32,9 @@ function CustomProvider({children}){
             let array= [];      
             array = products.filter((value)=>value.id !== productId);
             setProducts(array);
+    }
+    function vaciarCarrito(){
+            setProducts([]);
     }
 
     function updateProduct(count,id){

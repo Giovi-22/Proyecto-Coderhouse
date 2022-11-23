@@ -4,7 +4,7 @@ import ItemListContainer from "./ItemListContainer";
 import ItemDetailContainer from "./ItemDetailContainer";
 import Bienvenidos from "./Bienvenidos";
 import CheckoutContainer from "./CheckoutContainer";
-import CheckoutForm from "./CheckoutForm";
+import FormContainer from "./FormContainer";
 
 
 function Main(){
@@ -17,7 +17,7 @@ function Main(){
                     <Route path="/categorias/:id" element= <ItemListContainer /> />
                     <Route path="/item/:id" element=<ItemDetailContainer /> />
                     <Route path="/carrito" element= <CheckoutContainer /> />
-                    <Route path="/formulario" element= <CheckoutForm /> />
+                    <Route path="/formulario" element= <FormContainer /> />
                     <Route path="/*" element=<p>Ruta no encontrada</p> />
                 </Routes> 
             </main>

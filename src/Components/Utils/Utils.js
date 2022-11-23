@@ -7,7 +7,7 @@ import { db } from "../Firebase/Firestore";
 import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 
 const productsCollection = collection(db,"productos");
-
+const salesCollection = collection (db,"ventas");
 
 const tiempo = 500;
 //--------------------FUNCTIONS----------------------------------
@@ -31,6 +31,10 @@ export function getProductsByCat(cat,time=tiempo){
 
 export function addProducts(products){
         const response = products.map(producto=>addDoc(productsCollection,producto));
+        return response;
+}
+export function addSaleToCollection(sale){
+        const response = addDoc(salesCollection,sale);
         return response;
 }
 

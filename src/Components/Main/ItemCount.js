@@ -36,7 +36,6 @@ function ItemCount({stock, onCount, cuantity=1}){
         } 
            
         }
-
     return(
         <div style={itemCountStyle}>
             <IconButton onClick={handleResta} color="primary" disabled={count <= 1 ? true:false}> <RemoveIcon /> </IconButton>

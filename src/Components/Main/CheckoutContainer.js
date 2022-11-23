@@ -16,7 +16,6 @@ function CheckoutContainer(){
                 updateProduct(count,id);
                 };
 
-
             useEffect(()=>{
                 let tot = 0;
                 products.forEach(value=>{
@@ -43,7 +42,7 @@ function CheckoutContainer(){
                         <Typography className="total-productos">${products.length === 0 ? null : total.toFixed(2)}</Typography>
                 </div>
                 <div className="btn-continuarcompra">
-                        <Button variant="contained" color="primary" component={Link} to="/formulario">Continuar Compra</Button>
+                        <Button variant="contained" color="primary" component={Link} to="/formulario" >Continuar Compra</Button>
                 </div>
             </Paper>
 

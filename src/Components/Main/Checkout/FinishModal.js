@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Backdrop, Box, CircularProgress, Fade, Modal, Typography } from "@mui/material";
-import { context } from "../../CustomProvider";
+import { context } from "../../../CustomProvider";
 
 
 const boxStyle = {

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Form from "./Form";
-import {context} from "../../CustomProvider";
-import {addSaleToCollection} from "../Utils/Utils";
-function FormContainer(){
+import CheckoutForm from "./CheckoutForm";
+import {context} from "../../../CustomProvider";
+import {addSaleToCollection} from "../../Utils/Utils";
+
+function CheckoutContainer(){
     const [sale, setSale] = useState({});
     const valorDelContexto = useContext(context);
     const {products,vaciarCarrito,setSaleId} = valorDelContexto;
@@ -21,8 +22,8 @@ function FormContainer(){
   },[sale])
   
     return (
-            <Form endPurchase={endPurchase} vaciarCarrito={()=>vaciarCarrito()}/>
+            <CheckoutForm endPurchase={endPurchase} vaciarCarrito={()=>vaciarCarrito()}/>
     );
 }
 
-export default FormContainer;
+export default CheckoutContainer;

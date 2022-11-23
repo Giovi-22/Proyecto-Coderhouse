@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import FinishModal from "./FinishModal";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const boxStyle={
     display:"flex",
@@ -23,7 +24,14 @@ const inputStyle={
         paddingLeft:"5px"
 }
 
-function Form({endPurchase,vaciarCarrito}){
+const buttonStyle={
+    width:"100%",
+    height:"30px",
+    justifyContent:"flex-start",
+    marginBottom:"10px"
+}
+
+function CheckoutForm({endPurchase,vaciarCarrito}){
     const [disabled,setDisabled] = useState(true);
     const [open,setOpen] = useState(false);
     const [redireccionar,setRedirect] = useState(false);
@@ -66,6 +74,7 @@ function Form({endPurchase,vaciarCarrito}){
     return(
 
             <>
+            <Button startIcon={<ArrowBackIosIcon />} component={Link} to="/carrito" sx={buttonStyle} variant="outlined"></Button>
             <form style={boxStyle} >
                     <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
                     <input onChange={handleChange} value={datos.apellido} type="text" placeholder="Apellido" style={inputStyle} id="apellido"/>
@@ -80,4 +89,4 @@ function Form({endPurchase,vaciarCarrito}){
     );
 }
 
-export default Form;
+export default CheckoutForm;

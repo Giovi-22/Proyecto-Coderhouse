@@ -61,7 +61,7 @@ body {
   height: 100%;
 }
 
-.checkoutContainer, .productItem{
+.checkoutContainer, .cart-item{
     padding: 0 5px;
     width: 100%;
     align-self: start;
@@ -80,7 +80,7 @@ body {
   width: 100%;
   grid-area: productos;
 }
-.productItem{
+.cart-item{
   margin: 0;
   grid-template-areas: "cell1 cell2 cell3 cell4 cell5";
   grid-template-rows: 50px;
@@ -157,7 +157,7 @@ body {
   .navBar{
     grid-template-columns: [logo]100px [navLinks]auto [cartWidget]60px;
   }
-  .checkoutContainer, .productItem{
+  .checkoutContainer, .cart-item{
     margin: 20px 5px 0 5px;
     grid-template-columns: 30% 20% 20% 20% 10%;
     justify-items: center;

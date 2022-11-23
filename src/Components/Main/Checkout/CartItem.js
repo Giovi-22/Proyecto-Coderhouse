@@ -1,9 +1,9 @@
 import React from "react";
 import { IconButton, Typography } from "@mui/material";
-import ItemCount from "./ItemCount";
+import ItemCount from "../ItemCount";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function Checkout({product,onDelete, onCount}){
+function CartItem({product,onDelete, onCount}){
 
     function handleClick(){
             onDelete(product.id);
@@ -13,7 +13,7 @@ function Checkout({product,onDelete, onCount}){
     }
             
             return(
-                    <div className="productItem">
+                    <div className="cart-item">
                             <Typography color="primary">{product.name}</Typography>
                             <Typography >${product.price}</Typography>
                             <Typography ><ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad}/></Typography>
@@ -26,4 +26,4 @@ function Checkout({product,onDelete, onCount}){
 }
 
 
-export default Checkout;
+export default CartItem;

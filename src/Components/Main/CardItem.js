@@ -20,14 +20,6 @@ borderColor: "#e6707063",
 "&:hover":{boxShadow:"1px 1px 6px 1px #e6707063, -1px -1px 6px 1px #e6707063"}
 
 }
-const imageStyle={
-    marginBottom:"15px", 
-    width:"auto",
-    height:"auto",
-    maxWidth: "150px",
-    maxHeight: "150px"
-    
-}
 
 function CardItem({products}){
     
@@ -36,8 +28,7 @@ function CardItem({products}){
         <Card sx={cardStyle} variant="outlined">
                 <img 
                 src= {process.env.PUBLIC_URL + products.image}
-                style={imageStyle}
-                alt="Imagen de producto"
+                className="card-image"
                 />
 
                 <Divider 

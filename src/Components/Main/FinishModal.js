@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Backdrop, Box, Fade, Modal, Typography } from "@mui/material";
+import React, { useContext, useState } from "react";
+import { Backdrop, Box, CircularProgress, Fade, Modal, Typography } from "@mui/material";
+import { context } from "../../CustomProvider";
+
 
 const boxStyle = {
     position: "absolute",
@@ -14,13 +16,19 @@ const boxStyle = {
     p: 4,
   };
 
-function FinishModal({enabled=false,close}){
+function FinishModal({enabled=false,close,redirect}){
     const [open, setOpen] = useState(enabled);
+    const valorDelContexto = useContext(context);
+    const {saleId,setSaleId} = valorDelContexto;
+
     function handleClose(){
         close();
         setOpen(false);
+        setSaleId("");
+        redirect();
     }
     return(
+        
         <Modal
         open={open}
         onClose={handleClose}
@@ -36,8 +44,7 @@ function FinishModal({enabled=false,close}){
               Gracias por tu compra!
             </Typography>
             <Typography sx={{ mt: 2 }}>
-             El número de identificación es: 
-             Su compra va a ser enviada a la siguiente dirección: 
+             El número de identificación de su compra es: {saleId === "" ? <CircularProgress /> : saleId} 
             </Typography>
           </Box>
         </Fade>

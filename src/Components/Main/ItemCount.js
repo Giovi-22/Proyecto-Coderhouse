@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import {Typography,IconButton} from "@mui/material";
+import {Typography,IconButton, Box} from "@mui/material";
 import { useTheme } from "@mui/material";
 
 
@@ -12,18 +12,18 @@ function ItemCount({stock, onCount, cuantity=1}){
 
 
     const itemCountStyle={
-        width: "90px",
+        width: "100px",
         border:"3px solid",
         borderColor: bColor,
         borderRadius: "10px",
         display:"flex",
-        justifyContent:"space-between",
+        justifyContent:"space-around",
         alignItems:"center"
 
 }
 
     function handleSuma(){
-        if(count <= stock){
+        if(count < stock){
             setCount(count + 1);
             onCount(count + 1);  
         }
@@ -37,11 +37,11 @@ function ItemCount({stock, onCount, cuantity=1}){
            
         }
     return(
-        <div style={itemCountStyle}>
+        <Box sx={itemCountStyle}>
             <IconButton onClick={handleResta} color="primary" disabled={count <= 1 ? true:false}> <RemoveIcon /> </IconButton>
-            <Typography color="inherit" variant="h6" >{count}</Typography>
-            <IconButton onClick={handleSuma} color="primary" disabled={count >= stock ? true:false}>   <AddIcon />    </IconButton> 
-        </div>
+            <Typography color="inherit" variant="h6" > {count} </Typography>
+            <IconButton onClick={handleSuma} color="primary" disabled={count >= stock ? true:false}> <AddIcon /> </IconButton> 
+        </Box>
     );
 
 

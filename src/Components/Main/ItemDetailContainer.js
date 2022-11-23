@@ -1,7 +1,7 @@
 import React, { useContext, useEffect,useState } from "react";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import {getProductById} from "../Utils/Utils";
+import { getProductById } from "../Utils/Utils";
 import { CircularProgress } from "@mui/material";
 import { context } from "../../CustomProvider";
 
@@ -19,9 +19,8 @@ function ItemDetailContainer(){
             valorDelContexto.addProducts({...item,cantidad:1}); 
         }else{
             valorDelContexto.addProducts(item);
-        }
-         
-}
+        }        
+    }
     
     useEffect(()=>{
         getProductById(id)
@@ -34,11 +33,11 @@ function ItemDetailContainer(){
     },[id])
 
     return(
-        <div className="main">
+            <div className="main">
                 <div className="itemsContainer">
                 {Object.keys(item).length === 0 ?<CircularProgress /> :<ItemDetail product={item} onCount={handleCount} addToContext={addToContext}/>}
                 </div>               
-        </div>
+            </div>
     );
 }
 

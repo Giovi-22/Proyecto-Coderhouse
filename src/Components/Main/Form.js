@@ -1,5 +1,6 @@
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import FinishModal from "./FinishModal";
 
 const boxStyle={
@@ -23,34 +24,36 @@ const inputStyle={
 }
 
 function Form({endPurchase,vaciarCarrito}){
+    const [disabled,setDisabled] = useState(true);
+    const [open,setOpen] = useState(false);
+    const [redireccionar,setRedirect] = useState(false);
     const [datos, setDatos] = useState({
         nombre:"",
-        apellido: "",
+        apellido:"",
         email:"",
         confirmar_email:"",
         telefono:""
     });
-    const [disabled,setDisabled] = useState(true);
-    const [open,setOpen] = useState(false);
+
 
     function handleChange(event){
             const {id,value} = event.target;
             setDatos(prevValue => ({...prevValue,[id]:value}));
     }
     function handleClick(){
-            setOpen(true);
             endPurchase(datos);
+            setOpen(true);
     }
     function handleClose(){
             setOpen(false);
-            setDatos(()=>({ nombre:"",
-            apellido: "",
-            email:"",
-            confirmar_email:"",
-            telefono:""}))      
+            setDatos({})      
             vaciarCarrito();         
     }
+    function redirect(){
+        setRedirect(true);
+    }
     useEffect(()=>{
+        console.log("entra en useeffect")
         if(datos.email !== "" && datos.confirmar_email !== ""){     
             if(datos.email === datos.confirmar_email){
                 setDisabled(false);
@@ -58,7 +61,6 @@ function Form({endPurchase,vaciarCarrito}){
                 setDisabled(true);
             }
         }
-
     },[datos.email,datos.confirmar_email])
 
     return(
@@ -72,7 +74,8 @@ function Form({endPurchase,vaciarCarrito}){
                     <input onChange={handleChange} value={datos.telefono} type="text" placeholder="Telefono" style={inputStyle} id="telefono"/>
                 </form>
                 <Button variant="contained" disabled={disabled} onClick={handleClick}>Finalizar Compra</Button>
-                {open && <FinishModal enabled={open} close={handleClose}/>}
+                {open && <FinishModal enabled={open} close={handleClose} redirect={redirect} />}
+                {redireccionar && <Navigate to="/" />}
             </>
     );
 }

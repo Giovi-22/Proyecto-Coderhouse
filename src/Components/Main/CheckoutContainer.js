@@ -38,11 +38,11 @@ function CheckoutContainer(){
                         <div className="productos">
                             {products.map((value,index)=><Checkout  key={value.id + index} product={value} onDelete={handleDelete} onCount={handleCount}/>)}
                         </div>   
-                        <Typography className="productTotal">Total</Typography>
+                        <Typography className="total">Total</Typography>
                         <Typography className="total-productos">${products.length === 0 ? null : total.toFixed(2)}</Typography>
                 </div>
                 <div className="btn-continuarcompra">
-                        <Button variant="contained" color="primary" component={Link} to="/formulario" >Continuar Compra</Button>
+                        <Button variant="contained" color="primary" component={Link} to="/formulario" disabled={products.length === 0 ? true : false} >Continuar Compra</Button>
                 </div>
             </Paper>
 

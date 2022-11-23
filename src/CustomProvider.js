@@ -7,14 +7,16 @@ function CustomProvider({children}){
 
     const [count,setCount] = useState(0);
     const [products, setProducts] = useState([]);
-    
+    const [saleId,setSaleId] = useState("");
     let valorDelContexto = {
         addProducts: handleProducts,
         deleteProduct: handleDelete,
         updateProduct:updateProduct,
         vaciarCarrito:vaciarCarrito,
         cuantity:count,
-        products: products
+        products: products,
+        saleId: saleId,
+        setSaleId: setSaleId
             };
   
     function handleProducts(product){

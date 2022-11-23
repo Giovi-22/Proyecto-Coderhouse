@@ -1,6 +1,6 @@
 import React from "react";
 import ItemCount from "./ItemCount";
-import { Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
@@ -10,7 +10,7 @@ const itemdetailStyle={
             justifyContent:"center",
             alignItem:"center",
             height:"500px",
-            width:"80%"
+            width:"100%"
 
 }
 const imageContainerStyle={
@@ -19,12 +19,7 @@ const imageContainerStyle={
             justifyContent:"center",
             alignItems:"center"
 }
-const imageStyle={
-    width:"auto",
-    height:"auto",
-    maxWidth: "300px",
-    maxHeight: "300px"
-}
+
 
 const descriptionStyle={
     width:"50%",
@@ -45,26 +40,23 @@ const countStyle={
 
 function ItemDetail({product,onCount,addToContext}){
 
-
-
-
     return (
-        <div style={itemdetailStyle}>
-            <div style={imageContainerStyle}>
-                <img id="imagen" style={imageStyle} src={product.image} alt="Cortantes impresos en 3D" />
-            </div>
-            <div style={descriptionStyle}>
+        <Paper elevation={2} sx={itemdetailStyle}>
+            <Box sx={imageContainerStyle}>
+                <img id="imagen" className="detail-image" src={product.image} alt="Cortantes impresos en 3D" />
+            </Box>
+            <Box sx={descriptionStyle}>
                     <Typography color="inherit" variant="h4" >{product.name}</Typography>
                     <Typography color="inherit" variant="body1" >{product.description}</Typography>
-                <div style={countStyle}>
+                <Box sx={countStyle}>
                     <Typography gutterTop color="inherit" variant="h6" >Cantidad</Typography>
                     <ItemCount stock={product.stock} onCount={(count)=>onCount(count)} cuantity={product.cantidad}/>
-                </div>
+                </Box>
                     <Typography color="inherit" variant="h3" sx={{alignSelf:"center"}} >${product.price}</Typography>
                     {product.cantidad > 1 ? <Typography color="#3333337a" variant="h6" sx={{alignSelf:"center"}} >SUBTOTAL ${product.subTotal.toFixed(2)}</Typography> : null }
                     <Button onClick={()=>addToContext()} color="primary" variant="outlined" sx={{alignSelf:"center"}}><ShoppingCartIcon />AGREGAR AL CARRITO</Button>   
-            </div>
-        </div>
+            </Box>
+        </Paper>
 
     );
 }

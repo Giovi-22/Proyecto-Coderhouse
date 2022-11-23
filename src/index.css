@@ -89,7 +89,7 @@ body {
   border-bottom: 1px solid #e1e2e2;
 }
 
-.productTotal{
+.total{
   grid-area: total;
 }
 .total-productos{
@@ -136,7 +136,19 @@ body {
   grid-area: copyright;
 }
 
-
+.detail-image {
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  max-height: 300px;
+}
+.card-image{
+  margin-bottom: 15px; 
+  width: auto;
+  height: auto;
+  max-width: 150px;
+  max-height: 150px;   
+}
 
 @media (max-width: 670px){
   .gridItem-navlinks{

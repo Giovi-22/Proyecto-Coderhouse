@@ -1,10 +1,11 @@
-import { Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import FinishModal from "./FinishModal";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import CheckIcon from '@mui/icons-material/Check';
 
-const boxStyle={
+const formStyle={
     display:"flex",
     width:"500px",
     height:"300px",
@@ -31,7 +32,7 @@ const buttonStyle={
     marginBottom:"10px"
 }
 
-function CheckoutForm({endPurchase,vaciarCarrito}){
+function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
     const [disabled,setDisabled] = useState(true);
     const [open,setOpen] = useState(false);
     const [redireccionar,setRedirect] = useState(false);
@@ -61,28 +62,37 @@ function CheckoutForm({endPurchase,vaciarCarrito}){
         setRedirect(true);
     }
     useEffect(()=>{
-        console.log("entra en useeffect")
         if(datos.email !== "" && datos.confirmar_email !== ""){     
             if(datos.email === datos.confirmar_email){
                 setDisabled(false);
             }else{
                 setDisabled(true);
             }
-        }
+        }          
     },[datos.email,datos.confirmar_email])
 
     return(
 
             <>
             <Button startIcon={<ArrowBackIosIcon />} component={Link} to="/carrito" sx={buttonStyle} variant="outlined"></Button>
-            <form style={boxStyle} >
-                    <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
-                    <input onChange={handleChange} value={datos.apellido} type="text" placeholder="Apellido" style={inputStyle} id="apellido"/>
-                    <input onChange={handleChange} value={datos.email} type="text" placeholder="email@example.com" style={inputStyle} id="email"/>
-                    <input onChange={handleChange} value={datos.confirmar_email} type="text" placeholder="email@example.com" style={inputStyle} id="confirmar_email"/>
-                    <input onChange={handleChange} value={datos.telefono} type="text" placeholder="Telefono" style={inputStyle} id="telefono"/>
+            <Box sx={{display:"flex",justifyContent:"space-between"}}>
+                <form style={formStyle} >
+                        <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
+                        <input onChange={handleChange} value={datos.apellido} type="text" placeholder="Apellido" style={inputStyle} id="apellido"/>
+                        <input onChange={handleChange} value={datos.email} type="text" placeholder="email@example.com" style={inputStyle} id="email"/>
+                        <input onChange={handleChange} value={datos.confirmar_email} type="text" placeholder="email@example.com" style={inputStyle} id="confirmar_email"/>
+                        <input onChange={handleChange} value={datos.telefono} type="text" placeholder="Telefono" style={inputStyle} id="telefono"/>
                 </form>
+                <Box sx={{marginLeft:"30px",padding:"10px 0"}}>
+                    <ul>
+                        {products.map(value => <Typography key={value.id} variant="h6" color="primary"><CheckIcon/> {value.name}</Typography>)}
+                    </ul>
+                </Box>
+            </Box>
+            <Box sx={{display:"flex",justifyContent:"space-around", width:"100%"}}>
                 <Button variant="contained" disabled={disabled} onClick={handleClick}>Finalizar Compra</Button>
+                <Typography variant="h5" >Total: {Total.toFixed(2)}</Typography>
+            </Box>
                 {open && <FinishModal enabled={open} close={handleClose} redirect={redirect} />}
                 {redireccionar && <Navigate to="/" />}
             </>

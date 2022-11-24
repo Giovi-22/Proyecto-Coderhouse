@@ -49,6 +49,7 @@ function CustomProvider({children}){
         let cuenta = 0;
         products.map((value)=>cuenta = cuenta + value.cantidad)
         setCount(cuenta);
+        
     },[products])
 
 

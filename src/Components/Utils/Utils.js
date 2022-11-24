@@ -29,8 +29,8 @@ export function getProductsByCat(cat,time=tiempo){
     return resultado;
 }
 
-export function addProducts(products){
-        const response = products.map(producto=>addDoc(productsCollection,producto));
+export function addProduct(products){
+        const response = addDoc(productsCollection,products);
         return response;
 }
 export function addSaleToCollection(sale){

@@ -1,17 +1,18 @@
-import React, {createContext, useEffect, useState} from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export const context = createContext();
-const {Provider} = context;
+const { Provider } = context;
 
 function CustomProvider({children}){
 
     const [count,setCount] = useState(0);
     const [products, setProducts] = useState([]);
     const [saleId,setSaleId] = useState("");
+
     let valorDelContexto = {
         addProducts: handleProducts,
         deleteProduct: handleDelete,
-        updateProduct:updateProduct,
+        updateProductCuantity:updateProductCuantity,
         vaciarCarrito:vaciarCarrito,
         cuantity:count,
         products: products,
@@ -23,9 +24,8 @@ function CustomProvider({children}){
             const result = products.find(value=>value.id === product.id);
             if(result){
                 const valor = result.cantidad + product.cantidad;
-                updateProduct(valor,product.id);
+                updateProductCuantity(valor,product.id);
             }else{
-                product.stock = product.stock - product.cantidad;
                 setProducts([...products,product]); 
             }
     }  
@@ -39,7 +39,7 @@ function CustomProvider({children}){
             setProducts([]);
     }
 
-    function updateProduct(count,id){
+    function updateProductCuantity(count,id){
             let array = [...products];
             array.forEach(element=>{if(element.id === id){element.cantidad = count}});
             setProducts(array);
@@ -47,9 +47,8 @@ function CustomProvider({children}){
         
     useEffect(()=>{
         let cuenta = 0;
-        products.map((value)=>cuenta = cuenta + value.cantidad)
-        setCount(cuenta);
-        
+        products.forEach((value)=>cuenta = cuenta + value.cantidad)
+            setCount(cuenta);
     },[products])
 
 

@@ -74,7 +74,7 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
     return(
 
             <>
-            <Button startIcon={<ArrowBackIosIcon />} component={Link} to="/carrito" sx={buttonStyle} variant="outlined"></Button>
+            <Button startIcon={<ArrowBackIosIcon />} component={Link} to="/carrito" sx={buttonStyle} variant="outlined">Carrrito</Button>
             <Box sx={{display:"flex",justifyContent:"space-between"}}>
                 <form style={formStyle} >
                         <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
@@ -94,7 +94,7 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
                 <Typography variant="h5" >Total: {Total.toFixed(2)}</Typography>
             </Box>
                 {open && <FinishModal enabled={open} close={handleClose} redirect={redirect} />}
-                {redireccionar && <Navigate to="/" />}
+                {redireccionar && <Navigate to="/productos" />}
             </>
     );
 }

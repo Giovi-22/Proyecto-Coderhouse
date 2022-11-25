@@ -4,10 +4,12 @@ import ItemDetail from "./ItemDetail";
 import { getProductById } from "../Utils/Utils";
 import { CircularProgress } from "@mui/material";
 import { context } from "../../CustomProvider";
+import DialogBox from "./DialogBox";
 
 function ItemDetailContainer(){
     const [item, setItem] = useState({})
     const {id} = useParams();
+    const [error, setError] = useState(false);
     const valorDelContexto = useContext(context);
 
     function handleCount(count){
@@ -29,13 +31,16 @@ function ItemDetailContainer(){
             product.id = doc.id;
             setItem(product);
         })
-        .catch(error => console.log(error));
+        .catch(() => {
+            setError(true);
+        });
     },[id])
 
     return(
             <div className="main">
                 <div className="itemsContainer">
                 {Object.keys(item).length === 0 ?<CircularProgress /> :<ItemDetail product={item} onCount={handleCount} addToContext={addToContext}/>}
+                {error && <DialogBox titulo="Error" descripcion="El producto seleccionado no existe!" abrir={true}/>}
                 </div>               
             </div>
     );

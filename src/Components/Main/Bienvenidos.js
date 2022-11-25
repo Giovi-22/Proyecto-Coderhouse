@@ -1,7 +1,8 @@
 import React from "react";
 
-
 function Bienvenidos(){
+
+
 
     return(
             <div className="bienvenidos">

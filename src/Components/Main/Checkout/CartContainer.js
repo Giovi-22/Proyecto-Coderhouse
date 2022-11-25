@@ -2,8 +2,9 @@ import React,{ useContext, useEffect, useState } from "react";
 import { context } from "../../../CustomProvider";
 import Cart from "./Cart";
 
+
 function CartContainer(){
-            const {products,deleteProduct,updateProduct} = useContext(context);
+            const {products,deleteProduct,updateProductCuantity} = useContext(context);
             const [total,setTotal] =useState(0);
 
             function handleDelete(productId){
@@ -11,7 +12,7 @@ function CartContainer(){
             }
             
             function handleCount(count,id){
-                updateProduct(count,id);
+                updateProductCuantity(count,id);
                 };
 
             useEffect(()=>{
@@ -24,7 +25,9 @@ function CartContainer(){
             },[products])
 
             return (
+
                     <Cart onDelete={handleDelete} onCount={handleCount} total={total} products={products}/>
+
             );
 
 }

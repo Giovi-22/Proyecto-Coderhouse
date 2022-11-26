@@ -24,9 +24,11 @@ const inputStyle={
 function Formulario({userData,registrar}){
     const [disabled,setDisabled] = useState(true);
     const [datos, setDatos] = useState({
+        nombre:"",
+        apellido:"",
         email:"",
         confirmar_email:"",
-        password:"",
+        password:""
     });
     function handleClick(){
             registrar(datos);
@@ -48,9 +50,12 @@ useEffect(()=>{
     return(
         <>
                 <form style={formStyle} >
+                        <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
+                        <input onChange={handleChange} value={datos.apellido} type="text" placeholder="Apellido" style={inputStyle} id="apellido"/>
                         <input onChange={handleChange} value={datos.email} type="text" placeholder="email@example.com" style={inputStyle} id="email"/>
                         <input onChange={handleChange} value={datos.confirmar_email} type="text" placeholder="email@example.com" style={inputStyle} id="confirmar_email"/>
                         <input onChange={handleChange} value={datos.password} type="password" placeholder="Password" style={inputStyle} id="password"/>
+                        
                 </form>
                 <Button variant="contained" disabled={disabled} onClick={handleClick}>Sing Up</Button>
         </>

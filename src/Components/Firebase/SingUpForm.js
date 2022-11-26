@@ -1,32 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { auth } from "./Firestore";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState, useContext } from "react";
+import { CreateUser, UpdateUser,auth } from "./Firestore";
 import Formulario from "../Main/Checkout/Formulario";
-
+import {context} from "../../CustomProvider";
+import { Navigate } from "react-router-dom";
 
 function SingUpForm(){
-    const [userData,setUserdata] = useState({});
     const [register,setRegister] = useState(false);
-    console.log(register);
+    const valordelContexto = useContext(context);
+    const {setUser} = valordelContexto;
 
-   function registrar(data){
-        setUserdata(data)
-        setRegister(true);
-   }
-   useEffect(()=>{
-        if(register){
-            console.log(userData);
-            const user = createUserWithEmailAndPassword(auth,userData.email,userData.password);
-            user
-            .then(value=>console.log(value))
-            .catch(error => console.log(error));
-            
+   async function registrar(data){
+    try {
+        await CreateUser(data.email,data.password);
+        try {
+            UpdateUser(data.nombre);
+        } catch (error) {
+                    console.log(error);
         }
-        console.log("useEffect");
-        },[register])
+        setUser(auth.currentUser);
+        setRegister(true);
+    } catch (error) {
+        console.log(error);
+    }
+
+   }
 
     return (
+                <>
                     <Formulario registrar={registrar}/>
+                    {register && <Navigate to="/productos" />}
+                </>
 
                 
     )

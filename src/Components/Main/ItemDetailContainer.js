@@ -18,7 +18,7 @@ function ItemDetailContainer(){
 
     function addToContext(){
         if(isNaN(item.cantidad)){
-            valorDelContexto.addProducts({...item,cantidad:1}); 
+            valorDelContexto.addProducts({...item,cantidad:1,subTotal:item.price}); 
         }else{
             valorDelContexto.addProducts(item);
         }        

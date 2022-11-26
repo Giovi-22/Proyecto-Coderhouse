@@ -72,7 +72,7 @@ export const socialLinks=[
      url: "/",
      icon: <MailIcon />},
     {titulo:"+543416965696",
-     url:"/",
+     url:"",
      icon: <SmartphoneIcon />},
     {titulo:"+543416965696",
      url:"https://web.whatsapp.com/",

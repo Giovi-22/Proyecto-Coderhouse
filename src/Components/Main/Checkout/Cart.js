@@ -24,7 +24,7 @@ function Cart({onDelete,onCount,total,products}){
 
                                 </div>
                                 <div className="productos">
-                                {products.map((value,index)=><CartItem  key={value.id + index} product={value} onDelete={handleDelete} onCount={handleCount}/>)}
+                                {products.map((value)=><CartItem  key={value.id} product={value} onDelete={handleDelete} onCount={handleCount}/>)}
                                 </div>   
                                 <Typography className="total">Total</Typography>
                                 <Typography className="total-productos">${products.length === 0 ? null : total.toFixed(2)}</Typography>

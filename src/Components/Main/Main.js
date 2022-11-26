@@ -5,6 +5,7 @@ import ItemDetailContainer from "./ItemDetailContainer";
 import Bienvenidos from "./Bienvenidos";
 import CartContainer from "./Checkout/CartContainer";
 import CheckoutContainer from "./Checkout/CheckoutContainer";
+import SingUpForm from "../Firebase/SingUpForm";
 
 
 
@@ -19,6 +20,7 @@ function Main(){
                     <Route path="/item/:id" element=<ItemDetailContainer /> />
                     <Route path="/carrito" element= <CartContainer /> />
                     <Route path="/formulario" element= <CheckoutContainer /> />
+                    <Route path="/singup" element= <SingUpForm /> />
                     <Route path="/*" element=<p>Ruta no encontrada</p> />
                 </Routes> 
             </main>

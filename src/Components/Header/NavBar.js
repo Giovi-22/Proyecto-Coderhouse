@@ -1,11 +1,14 @@
 import React from "react";
-import {useMediaQuery } from "@mui/material";
-import NavLinks from "./NavLinks";
+import { Button, useMediaQuery } from "@mui/material";
 import CartWidget from "./CartWidget";
 import BrandLogo from "./BrandLogo";
 import MenuButton from "./MenuButton";
-import {useTheme} from "@mui/material";
-import {navLinks} from "../Utils/Utils";
+import { useTheme } from "@mui/material";
+import { navLinks } from "../Utils/Utils";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from "react-router-dom";
+import NavLinks from "../NavLinks";
+
 
 function NavBar(){
     const theme = useTheme();
@@ -13,6 +16,7 @@ function NavBar(){
 
     return(
         <nav className="navBar">
+                <Button className="gridItem-singup" component={Link} to="singup" variant="outlined" startIcon={<AccountCircleIcon />} >SingUp</Button>
             <div className="gridItem-logo">
                 <BrandLogo />
             </div>
@@ -21,13 +25,16 @@ function NavBar(){
                 <MenuButton menuItems={navLinks}/> 
                 : 
                 navLinks.map((value)=>(
-                    <NavLinks 
+                    <NavLinks
                         title={value.titulo}
                         href={value.url}
                         key={value.id}
-                    />))
+                        type="type1"
+                        />
+                    ))
                 }   
             </div>
+            
             <div className="gridItem-cartWidget">
                 <CartWidget />
             </div>

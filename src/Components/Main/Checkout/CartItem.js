@@ -17,7 +17,7 @@ function CartItem({product,onDelete, onCount}){
                             <Typography color="primary">{product.name}</Typography>
                             <Typography >${product.price}</Typography>
                             <Typography ><ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad}/></Typography>
-                            <Typography >${product.subTotal}</Typography>
+                            <Typography >${product.subTotal.toFixed(2)}</Typography>
                             <IconButton onClick={handleClick} color="primary"><DeleteIcon /></IconButton>
                    </div>
                     

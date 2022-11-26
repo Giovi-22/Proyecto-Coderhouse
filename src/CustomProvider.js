@@ -4,7 +4,7 @@ export const context = createContext();
 const { Provider } = context;
 
 function CustomProvider({children}){
-
+    const [total,setTotal] = useState(0);
     const [count,setCount] = useState(0);
     const [products, setProducts] = useState([]);
     const [saleId,setSaleId] = useState("");
@@ -14,10 +14,11 @@ function CustomProvider({children}){
         deleteProduct: handleDelete,
         updateProductCuantity:updateProductCuantity,
         vaciarCarrito:vaciarCarrito,
+        setSaleId: setSaleId,
         cuantity:count,
         products: products,
-        saleId: saleId,
-        setSaleId: setSaleId
+        Total:total,
+        saleId: saleId
             };
   
     function handleProducts(product){
@@ -26,9 +27,9 @@ function CustomProvider({children}){
                 const valor = result.cantidad + product.cantidad;
                 updateProductCuantity(valor,product.id);
             }else{
-                setProducts([...products,product]); 
+                setProducts([...products,product]);
             }
-    }  
+    }
 
     function handleDelete(productId){
             let array= [];      
@@ -38,19 +39,32 @@ function CustomProvider({children}){
     function vaciarCarrito(){
             setProducts([]);
     }
-
+    function updateCartCuantity(productsArray){
+        let cuenta = 0;
+        productsArray.forEach((value)=>cuenta = cuenta + value.cantidad);
+        setCount(cuenta);
+        calcularTotal(productsArray);
+    }
     function updateProductCuantity(count,id){
             let array = [...products];
-            array.forEach(element=>{if(element.id === id){element.cantidad = count}});
+            array.forEach(element=>{
+                if(element.id === id){
+                    element.cantidad = count;
+                    element.subTotal = element.price * count;
+                }});
+            updateCartCuantity(array);
             setProducts(array);
     }
-        
-    useEffect(()=>{
-        let cuenta = 0;
-        products.forEach((value)=>cuenta = cuenta + value.cantidad)
-            setCount(cuenta);
-    },[products])
 
+    function calcularTotal(productsArray){
+        let sumaTotal = 0;
+        productsArray.forEach(producto => sumaTotal = sumaTotal + (producto.price*producto.cantidad));
+        setTotal(sumaTotal);
+    }
+    
+    useEffect(()=>{
+        updateCartCuantity(products);
+    },[products.length])
 
     return(
             <Provider value={valorDelContexto} >

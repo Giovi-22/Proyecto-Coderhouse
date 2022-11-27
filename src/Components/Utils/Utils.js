@@ -8,7 +8,7 @@ import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase
 
 const productsCollection = collection(db,"productos");
 const salesCollection = collection (db,"ventas");
-
+const wishlistCollection = collection (db,"wishlist");
 const tiempo = 500;
 //--------------------FUNCTIONS----------------------------------
 export function getProducts(){
@@ -38,9 +38,11 @@ export function addSaleToCollection(sale){
         return response;
 }
 
-export function addProductToContext(products, item){   
-                
+export function addWishlistToCollection(wishlist){
+        const response = addDoc(wishlistCollection,wishlist);
+        return response;
 }
+        
 //-------------------------LINKS----------------------------------
 
 

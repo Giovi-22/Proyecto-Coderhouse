@@ -3,7 +3,7 @@ import { Button, Paper, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
-function Cart({onDelete,onCount,total,products}){
+function Cart({onDelete,onCount,total,products,vaciarCarrito}){
 
         function handleDelete(productId){
                 onDelete(productId);
@@ -12,6 +12,9 @@ function Cart({onDelete,onCount,total,products}){
         function handleCount(count,id){
                 onCount(count,id);
         };
+        function handleClick(){
+                vaciarCarrito()
+        }
 
         return (
                 <Paper elevation={1} sx={{display:"flex",flexDirection:"column",width:"90%",marginTop:"10px"}}>
@@ -31,6 +34,7 @@ function Cart({onDelete,onCount,total,products}){
                         </div>
                         <div className="btn-continuarcompra">
                                 <Button variant="contained" color="primary" component={Link} to="/formulario" disabled={products.length === 0 ? true : false} >Continuar Compra</Button>
+                                <Button variant="contained" color="primary" onClick={handleClick} disabled={products.length === 0 ? true : false} >Vaciar carrito</Button>
                         </div>
                 </Paper>
 

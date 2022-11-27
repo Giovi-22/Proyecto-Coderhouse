@@ -1,7 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import {navLinks, socialLinks} from "../Utils/Utils";
-import RedesSociales from "./RedesSociales";
 import NavLinks from "../NavLinks";
 
 

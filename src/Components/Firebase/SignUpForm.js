@@ -4,10 +4,10 @@ import Formulario from "../Main/Checkout/Formulario";
 import {context} from "../../CustomProvider";
 import { Navigate } from "react-router-dom";
 
-function SingUpForm(){
+function SignUpForm(){
     const [register,setRegister] = useState(false);
     const valordelContexto = useContext(context);
-    const {setUser} = valordelContexto;
+    const {setUser,setIslogged} = valordelContexto;
 
    async function registrar(data){
     try {
@@ -17,6 +17,7 @@ function SingUpForm(){
         } catch (error) {
                     console.log(error);
         }
+        setIslogged(true);
         setUser(auth.currentUser);
         setRegister(true);
     } catch (error) {
@@ -35,4 +36,4 @@ function SingUpForm(){
     )
 }
 
-export default SingUpForm;
+export default SignUpForm;

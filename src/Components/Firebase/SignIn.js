@@ -1,10 +1,10 @@
-import { Box, Button } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import { Link, Navigate } from "react-router-dom";
 import { context } from "../../CustomProvider";
 import { SignInWithGoogle, SignInUser} from "../Firebase/Firestore";
 import GoogleIcon from '@mui/icons-material/Google';
-import { async } from "@firebase/util";
+import SnackbarDialog from "../Main/SnackbarDialog";
 
 
 const formStyle={
@@ -30,16 +30,24 @@ const boxStyle ={
         display: "flex",
 
 }
+const boxAccountStyle = {
+        display: "flex",
+        flexDirection:"column",
+        justifyContent:"flex-end",
+        alignItems:"flex-start"
+}
 const googleButtonStyle = {
             width:"200px",
             height:"40px",
-            alignSelf:"flex-end"
+            margin:"0 0 10px 0"
         }
+
 
 function SignIn(){
     const [redirect,setRedirect] = useState(false);
+    const [openSnackbar,setOpenSnackbar] = useState({estado:false,error:false,mensaje:""});
     const valordelContexto = useContext(context);
-    const {setUser} = valordelContexto;
+    const {setUser,setIslogged} = valordelContexto;
     const [datos, setDatos] = useState({
         email:"",
         password:""
@@ -49,21 +57,24 @@ function SignIn(){
     async function handleDefault(){
         try {
             const resultado = await SignInUser(datos.email,datos.password);
+            setIslogged(true);
             setUser(resultado.user);
-            setRedirect(true);
+            setOpenSnackbar({estado:true,error:false,mensaje:"Usuario ingresado existosamente!"});
         } catch (error) {
-            alert("usuario o contraseña incorrecta. Usuario no existe");
+            setOpenSnackbar({estado:true,error:true,mensaje:"usuario o contraseña incorrecta. Usuario no existe"});
         }
         
         
     }
     async function handleGoogle(){
         try {
-            const resultado = await SignInWithGoogle()
-            setRedirect(true);
+            const resultado = await SignInWithGoogle();
+            setIslogged(true);
+            setOpenSnackbar({estado:true,error:false, mensaje:"Usuario ingresado existosamente!"});
             setUser(resultado.user);
         } catch (error) {
-            console.log(error);
+            setOpenSnackbar({estado:true,error:true,mensaje:"usuario o contraseña incorrecta. Usuario no existe"});
+
         }
         
     }
@@ -73,7 +84,16 @@ function SignIn(){
         setDatos(prevValue => ({...prevValue,[id]:value}));
 }
 
-
+    function handleOpen(){
+        if(openSnackbar.error === false){
+            setRedirect(true);
+            setOpenSnackbar({estado:false,error:false,mensaje:""});
+        }else{
+            setOpenSnackbar({estado:false,error:true,mensaje:""});
+        }
+        
+    }
+   
     return(
         <Box sx={boxStyle}>
 
@@ -82,7 +102,11 @@ function SignIn(){
                         <input onChange={handleChange} value={datos.password} type="password" placeholder="Password" style={inputStyle} id="password"/>
                         <Button variant="contained" onClick={handleDefault} id="default">SignIn</Button>
                 </form>
+                <Box sx={boxAccountStyle}>
                 <Button sx={googleButtonStyle}variant="contained" onClick={handleGoogle} startIcon=<GoogleIcon /> id="google">SignIn with Google</Button>
+                <Typography variant="subtitle1" >¿No tiene una cuenta? <Link to="/singup">Cree una.</Link></Typography>
+                </Box>
+                <SnackbarDialog abrir={openSnackbar.estado} setAbrir={handleOpen} mensaje={openSnackbar.mensaje}/>
                 {redirect && <Navigate to="/productos" />}
         </Box>
     );

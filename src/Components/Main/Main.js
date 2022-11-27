@@ -5,8 +5,9 @@ import ItemDetailContainer from "./ItemDetailContainer";
 import Bienvenidos from "./Bienvenidos";
 import CartContainer from "./Checkout/CartContainer";
 import CheckoutContainer from "./Checkout/CheckoutContainer";
-import SingUpForm from "../Firebase/SingUpForm";
+import SignUpForm from "../Firebase/SignUpForm";
 import SignIn from "../Firebase/SignIn";
+import WishlistContainer from "./WishList/WishlistContainer";
 
 
 
@@ -21,8 +22,9 @@ function Main(){
                     <Route path="/item/:id" element=<ItemDetailContainer /> />
                     <Route path="/carrito" element= <CartContainer /> />
                     <Route path="/formulario" element= <CheckoutContainer /> />
-                    <Route path="/singup" element= <SingUpForm /> />
+                    <Route path="/singup" element= <SignUpForm /> />
                     <Route path="/signin" element= <SignIn /> />
+                    <Route path="/wishlist" element= <WishlistContainer /> />
                     <Route path="/*" element=<p>Ruta no encontrada</p> />
                 </Routes> 
             </main>

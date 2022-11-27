@@ -1,9 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import FinishModal from "./FinishModal";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CheckIcon from '@mui/icons-material/Check';
+import { context } from "../../../CustomProvider";
 
 const formStyle={
     display:"flex",
@@ -36,6 +37,8 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
     const [disabled,setDisabled] = useState(true);
     const [open,setOpen] = useState(false);
     const [redireccionar,setRedirect] = useState(false);
+    const valordelContexto = useContext(context);
+    const {Usuario} = valordelContexto;
     const [datos, setDatos] = useState({
         nombre:"",
         apellido:"",
@@ -50,8 +53,8 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
             setDatos(prevValue => ({...prevValue,[id]:value}));
     }
     function handleClick(){
-            endPurchase(datos);
-            setOpen(true);
+                endPurchase(datos);
+                setOpen(true);     
     }
     function handleClose(){
             setOpen(false);
@@ -68,7 +71,10 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
             }else{
                 setDisabled(true);
             }
-        }          
+        }
+        if(Object.keys(Usuario).length !== 0 ){
+            setDisabled(false);
+        }       
     },[datos.email,datos.confirmar_email])
 
     return(
@@ -76,6 +82,9 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
             <>
             <Button startIcon={<ArrowBackIosIcon />} component={Link} to="/carrito" sx={buttonStyle} variant="outlined">Carrrito</Button>
             <Box sx={{display:"flex",justifyContent:"space-between"}}>
+            {Object.keys(Usuario).length !== 0 ? 
+                <Typography variant="h4" >Comprar como {Usuario.email}</Typography>
+                 :
                 <form style={formStyle} >
                         <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
                         <input onChange={handleChange} value={datos.apellido} type="text" placeholder="Apellido" style={inputStyle} id="apellido"/>
@@ -83,6 +92,7 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
                         <input onChange={handleChange} value={datos.confirmar_email} type="text" placeholder="email@example.com" style={inputStyle} id="confirmar_email"/>
                         <input onChange={handleChange} value={datos.telefono} type="text" placeholder="Telefono" style={inputStyle} id="telefono"/>
                 </form>
+            }
                 <Box sx={{marginLeft:"30px",padding:"10px 0"}}>
                     <ul>
                         {products.map(value => <Typography key={value.id} variant="h6" color="primary"><CheckIcon/> {value.name}</Typography>)}

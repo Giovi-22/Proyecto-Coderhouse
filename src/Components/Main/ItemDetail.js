@@ -3,6 +3,7 @@ import ItemCount from "./ItemCount";
 import { Box, Paper, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import WhisIcon from "./WishList/WhisIcon";
 
 
 const itemdetailStyle={
@@ -37,11 +38,21 @@ const countStyle={
     justifyContent:"space-between",
     alignItem:"center",
 }
+const wishIconStyle={
+        width:"40px",
+        height:"40px",
+        display:"flex",
+        justifyContent:"center",
+        alignItem:"center"
+}
 
-function ItemDetail({product,onCount,addToContext}){
+function ItemDetail({product,onCount,addToContext,isLogged}){
 
     return (
         <Paper elevation={2} sx={itemdetailStyle}>
+            <Box sx={wishIconStyle}>
+                {isLogged && <WhisIcon product={product} />}
+            </Box>
             <Box sx={imageContainerStyle}>
                 <img id="imagen" className="detail-image" src={product.image} alt="Cortantes impresos en 3D" />
             </Box>

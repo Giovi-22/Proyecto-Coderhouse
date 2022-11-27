@@ -1,11 +1,14 @@
-import React, { useEffect,useState } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import CardItem from "./CardItem";
 import {useParams} from "react-router-dom";
 import {getProductsByCat,getProducts} from "../Utils/Utils";
 import { CircularProgress } from "@mui/material";
+import { context } from "../../CustomProvider";
 
 function ItemListContainer(){
     const [products, setProducts] = useState([])
+    const valorDelContexto = useContext(context);
+    const {Logged} = valorDelContexto;
     const {id} = useParams();
     
     useEffect(()=>{
@@ -30,7 +33,7 @@ function ItemListContainer(){
 
     return (
                 <div className="itemsContainer">
-                    {products.length === 0 ? <CircularProgress /> : products.map((prod)=><CardItem key={prod.id} products={prod}/>)}
+                    {products.length === 0 ? <CircularProgress /> : products.map((prod)=><CardItem key={prod.id} products={prod} isLogged={Logged}/>)}
                 </div>               
              
     );

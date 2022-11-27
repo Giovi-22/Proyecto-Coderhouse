@@ -11,16 +11,16 @@ function ItemDetailContainer(){
     const {id} = useParams();
     const [error, setError] = useState(false);
     const valorDelContexto = useContext(context);
-
+    const {addProducts,Logged} = valorDelContexto;
     function handleCount(count){
         setItem((prevValue)=> ({...prevValue,cantidad:count,subTotal:(prevValue.price * count)}));  
     }
 
     function addToContext(){
         if(isNaN(item.cantidad)){
-            valorDelContexto.addProducts({...item,cantidad:1,subTotal:item.price}); 
+            addProducts({...item,cantidad:1,subTotal:item.price}); 
         }else{
-            valorDelContexto.addProducts(item);
+            addProducts(item);
         }        
     }
     
@@ -39,7 +39,7 @@ function ItemDetailContainer(){
     return(
             <div className="main">
                 <div className="itemsContainer">
-                {Object.keys(item).length === 0 ?<CircularProgress /> :<ItemDetail product={item} onCount={handleCount} addToContext={addToContext}/>}
+                {Object.keys(item).length === 0 ?<CircularProgress /> :<ItemDetail product={item} onCount={handleCount} addToContext={addToContext} isLogged={Logged}/>}
                 {error && <DialogBox titulo="Error" descripcion="El producto seleccionado no existe!" abrir={true}/>}
                 </div>               
             </div>

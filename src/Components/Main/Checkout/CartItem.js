@@ -3,7 +3,7 @@ import { IconButton, Typography } from "@mui/material";
 import ItemCount from "../ItemCount";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function CartItem({product,onDelete, onCount}){
+function CartItem({product,onDelete, onCount,isWishlist = false}){
 
     function handleClick(){
             onDelete(product.id);
@@ -14,11 +14,14 @@ function CartItem({product,onDelete, onCount}){
             
             return(
                     <div className="cart-item">
-                            <Typography color="primary">{product.name}</Typography>
-                            <Typography >${product.price}</Typography>
-                            <Typography ><ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad}/></Typography>
-                            <Typography >${product.subTotal.toFixed(2)}</Typography>
-                            <IconButton onClick={handleClick} color="primary"><DeleteIcon /></IconButton>
+                        <div className="cartitem-tittle">
+                                <img id="imagen" className="wish-image" src={product.image} alt="Cortantes impresos en 3D" />
+                                <Typography color="primary">{product.name}</Typography>
+                        </div>
+                        <Typography >${product.price}</Typography>
+                        {isWishlist ? null : <Typography ><ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad}/></Typography>}
+                        {isWishlist ? null : <Typography >${product.subTotal}</Typography>}
+                        <IconButton onClick={handleClick} color="primary"><DeleteIcon /></IconButton>
                    </div>
                     
             )

@@ -1,9 +1,10 @@
 import React from "react";
-import { Card,CardContent,CardActions} from '@mui/material';
-import {Typography} from "@mui/material";
+import { Card,CardContent,CardActions } from '@mui/material';
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import {Divider} from "@mui/material";
-import {Button} from "@mui/material";
+import  {Divider} from "@mui/material";
+import { Button } from "@mui/material";
+import WhisIcon from "./WishList/WhisIcon";
 
 const cardStyle={
 width: "250px",
@@ -21,7 +22,7 @@ borderColor: "#e6707063",
 
 }
 
-function CardItem({products}){
+function CardItem({products,isLogged}){
     
     return(
         
@@ -37,7 +38,8 @@ function CardItem({products}){
                 />
             <CardContent sx={{textAlign:"center"}}>
                 <Typography color="inherit" variant="h6" >{products.name}</Typography>
-                <Typography variant="subtitle1" sx={{margin:"10px 0", color:"#76d275"}}>En Stock</Typography>
+                <Typography variant="subtitle1" color="#76d275">En Stock</Typography>
+                {isLogged && <WhisIcon product={products}/>}
             </CardContent>
             <CardActions sx={{width:"100%",marginTop:"auto"}}>
                 <Button color="primary" variant="outlined" sx={{margin:"0 auto", width:"90%"}} component={Link} to={"/item/"+ products.id}>Ver detalles</Button>

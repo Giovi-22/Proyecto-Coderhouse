@@ -4,7 +4,7 @@ import Cart from "./Cart";
 
 
 function CartContainer(){
-            const {products,deleteProduct,updateProductCuantity,Total} = useContext(context);
+            const {products,deleteProduct,updateProductCuantity,Total,vaciarCarrito} = useContext(context);
 
             function handleDelete(productId){
                 deleteProduct(productId);
@@ -16,7 +16,7 @@ function CartContainer(){
 
             return (
 
-                    <Cart onDelete={handleDelete} onCount={handleCount} total={Total} products={products}/>
+                    <Cart onDelete={handleDelete} onCount={handleCount} total={Total} products={products} vaciarCarrito={()=>vaciarCarrito()}/>
 
             );
 

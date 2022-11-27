@@ -1,10 +1,22 @@
-                                                                # CB3DESIGN
+#                                                                       CB3DESIGN
 
- CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para el rubro de la pastelería. 
-
-Dentro de esta aplicación web podrás navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online.
+CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para el rubro de la pastelería. 
 
 La app está diseñada utilizando la librería de JavaScript React.JS 
+
+Dentro de esta aplicación web podrás navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online.
+A la hora de realizar la compra de los productos, si el usuario no ingreso a la página, va a tener un pequeño formulario en donde prodrá ingresar sus datos para poder validar la compra. Una vez validada la compra se le dara el feedback del id correspondiente a su compra.
+
+Un usuario podrá registrarse en la página accediendo al menú "ingresar", una vez allí podra iniciar session o crear una cuenta.
+Para crear una cuenta, deberá hacer click en "¿No tiene una cuenta? Cree una." en donde se le pedirá que ingrese los datos correspondientes.
+
+Para iniciar session el usuario podrá seleccionar dos formas:
+  -ingresar mediante email y contraseña con el registro de la página.
+  -ingresar mediante Google.
+  
+Una vez iniciada la session se le va a habilitar al usuario la posibilidad de tener una Wishlist en donde guardar sus productos favoritos.
+
+
 
 # Getting Started with Create React App
 

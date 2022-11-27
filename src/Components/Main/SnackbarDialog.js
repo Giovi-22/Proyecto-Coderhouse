@@ -28,7 +28,7 @@ import CloseIcon from "@mui/icons-material/Close";
     <div>
       <Snackbar
         open={abrir}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleClose}
         message={mensaje}
         action={action}

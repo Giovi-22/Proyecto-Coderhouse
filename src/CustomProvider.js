@@ -97,20 +97,24 @@ function CustomProvider({children}){
     }
 
     function updateCart(productos){
-               let array = [...products];
-               let arrayWish = [];
-               array.forEach((producto)=>{
-                    productos.forEach((prod)=>{
-                        if(prod.id === producto.id){
-                            producto.cantidad=producto.cantidad + 1;
-                        }else{
-                            arrayWish.push(prod);
-                        }
-                    });
-               });
-               setProducts([...array,...arrayWish]);
-    }
-
+               let arrayWish = [...productos];
+               if(products.length === 0){
+                setProducts(arrayWish);
+               }else{
+               productos.forEach(productWish=>{
+                   products.forEach(productCart =>{
+                    if(productWish.id === productCart.id){
+                            arrayWish = arrayWish.filter((value)=>value.id !== productWish.id);
+                    }
+                   })
+               })
+               if(arrayWish.length === 0){
+                setProducts(prevValues => [...prevValues]);
+               }else{
+                setProducts([...products,...arrayWish]);
+               }
+            }
+               }
     
     useEffect(()=>{
         updateCartCuantity(products);

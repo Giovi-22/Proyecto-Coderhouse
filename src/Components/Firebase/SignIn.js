@@ -100,10 +100,10 @@ function SignIn(){
                 <form style={formStyle} >
                         <input onChange={handleChange} value={datos.email} type="text" placeholder="email@example.com" style={inputStyle} id="email"/>
                         <input onChange={handleChange} value={datos.password} type="password" placeholder="Password" style={inputStyle} id="password"/>
-                        <Button variant="contained" onClick={handleDefault} id="default">SignIn</Button>
+                        <Button variant="contained" onClick={handleDefault} id="default">Sign In</Button>
                 </form>
                 <Box sx={boxAccountStyle}>
-                <Button sx={googleButtonStyle}variant="contained" onClick={handleGoogle} startIcon=<GoogleIcon /> id="google">SignIn with Google</Button>
+                <Button sx={googleButtonStyle}variant="contained" onClick={handleGoogle} startIcon=<GoogleIcon /> id="google">Sign in with Google</Button>
                 <Typography variant="subtitle1" >¿No tiene una cuenta? <Link to="/singup">Cree una.</Link></Typography>
                 </Box>
                 <SnackbarDialog abrir={openSnackbar.estado} setAbrir={handleOpen} mensaje={openSnackbar.mensaje}/>

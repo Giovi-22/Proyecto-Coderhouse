@@ -1,6 +1,6 @@
-# CB3Design - ecommerce
+                                                                # CB3DESIGN
 
-## CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para el rubro de la pastelería. 
+ CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para el rubro de la pastelería. 
 
 Dentro de esta aplicación web podrás navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online.
 

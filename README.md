@@ -63,3 +63,6 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
 * "react-dom":             version "^18.2.0"       Utilizada para proporcionar metodos de acceso al DOM virtual.
 * "react-router-dom":      version "^6.4.2"        Utilizada para la navegación dentro de la aplicación.
 * "react-scripts":         version "5.0.1"         Utilizada para ejecutar los scripts que vienen al instalar create-react-app. (start, build, test, eject)
+
+ ## GIF
+ ![Entrega final Barolin](https://user-images.githubusercontent.com/98109747/204173186-22d5f172-98f9-4cc4-b4bd-c04bc42e82bd.gif)

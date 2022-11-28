@@ -16,11 +16,11 @@ A través del siguiente link puede acceder al proyecto:
 Una vez dentro del repositorio puede hacer click en el botón "<>Code" en donde podra descargar el proyecto en formato .zip o copiar el link para realizar el clonado a través de Git.
 
 Descargado el proyecto, abra su consola de comandos, ingrese a la carpeta principal del proyecto y ejecute los siguientes comandos: 
-     $ cd <dirección a la carpeta principal del proyecto> 
-     $ npm install - para instalar la aplicación y sus dependencias. 
-     ....
-     Una vez completada la instalación ejecute el comando 
-     $ npm start - para correr la aplicación y poder verla en el navegador. 
+    * $ cd <dirección a la carpeta principal del proyecto> 
+    * $ npm install - para instalar la aplicación y sus dependencias. 
+    * ....
+    * Una vez completada la instalación ejecute el comando 
+    * $ npm start - para correr la aplicación y poder verla en el navegador. 
 
 ## USANDO LA APLICACIÓN
 Dentro de la applicación usted va a encontrar una barra de navegación superior para navegar por las siguientes secciones: 

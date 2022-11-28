@@ -5,7 +5,13 @@ CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para
 La app está diseñada utilizando la librería de JavaScript React.JS 
 
 Dentro de esta aplicación web podrás navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online.
-A la hora de realizar la compra de los productos, si el usuario no ingreso a la página, va a tener un pequeño formulario en donde prodrá ingresar sus datos para poder validar la compra. Una vez validada la compra se le dara el feedback del id correspondiente a su compra.
+A la hora de realizar la compra de los productos, si el usuario no ingreso a la página, va a tener un pequeño formulario en donde prodrá ingresar sus datos para poder validar la compra; si el usuario inicio session previamente, no se le pedirá que ingrese sus datos. Una vez validada la compra se le dara el feedback del id de su compra.
+
+## INSTALACION / USO
+Para instalar la app es necesario descargar los archivos del repositorio o bien, si utiliza la aplicación Git, puede clonar el repositorio directamente desde consola.
+
+A través del siguiente link puede acceder al proyecto:
+[a link] https://github.com/Giovi-22/Proyecto-Coderhouse
 
 Un usuario podrá registrarse en la página accediendo al menú "ingresar", una vez allí podra iniciar session o crear una cuenta.
 Para crear una cuenta, deberá hacer click en "¿No tiene una cuenta? Cree una." en donde se le pedirá que ingrese los datos correspondientes.

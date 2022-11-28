@@ -6,20 +6,20 @@ CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para
 
 La app está diseñada utilizando la librería de JavaScript React.JS 
 
-Dentro de esta aplicación web podrás navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online. En la sección USANDO LA APLICACION se explicará detalladamente el su uso.
+Dentro de esta aplicación web se puede navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online. En la sección USANDO LA APLICACION se explicará detalladamente su uso.
 
-Al final de este documento hay un archivo GIF del uso de la app e imágenes de como se ven los archivos en la base de datos.
+Al final de este documento se puede ver un archivo GIF del uso de la app e imágenes de cómo se ven los archivos en la base de datos.
 
 
-## INSTALACION 
-Para instalar la app es necesario descargar los archivos del repositorio o bien, si utiliza la aplicación Git, puede clonar el repositorio directamente desde consola.
+## INSTALACIÓN 
+Para instalar la app es necesario descargar los archivos del repositorio o bien, si se utiliza la aplicación Git, se puede clonar el repositorio directamente desde consola.
 
-A través del siguiente link puede acceder al proyecto:
+A través del siguiente link se puede acceder al proyecto:
 [a link] https://github.com/Giovi-22/Proyecto-Coderhouse
 
-Una vez dentro del repositorio puede hacer click en el botón "<>Code" en donde podra descargar el proyecto en formato .zip o copiar el link para realizar el clonado a través de Git.
+Una vez dentro del repositorio se puede hacer click en el botón "<>Code" en donde se  descarga el proyecto en formato .zip como así también se puede copiar el link para realizar el clonado a través de Git.
 
-Descargado el proyecto, abra su consola de comandos, ingrese a la carpeta principal del proyecto y ejecute los siguientes comandos:
+Descargado el proyecto, abrir la consola de comandos, ingresar a la carpeta principal del proyecto y ejecutar los siguientes comandos:
 
     * $ cd <dirección a la carpeta principal del proyecto> 
     * $ npm install - para instalar la aplicación y sus dependencias. 
@@ -28,37 +28,37 @@ Descargado el proyecto, abra su consola de comandos, ingrese a la carpeta princi
     * $ npm start - para correr la aplicación y poder verla en el navegador. 
 
 ## USANDO LA APLICACIÓN
-Dentro de la applicación usted va a encontrar una barra de navegación superior para navegar por las siguientes secciones: 
+Dentro de la app encontrará la barra de navegación superior para navegar a través de las siguientes secciones: 
 
       * un listado de todos los productos disponibles - PRODUCTOS
       * un acceso a cada categoría - CORTANTES, SELLOS ACRILICOS, MOLDES DE SILICONA
-      * un acceso al carrito - icono de carrito
+      * un acceso al carrito - ícono de carrito
       * un acceso para iniciar o registrarse en el sitio - INGRESAR
 
-Puede acceder al detalle de cada producto haciendo click en el botón VER DETALLES. El detalle del producto contiene su título, descripción, precio, total, subtotal, imagen, botones para incrementar la cantidad de productos deseados y un botón para agregar el producto al carrito de compras.
+Se puede acceder al detalle de cada producto haciendo click en el botón VER DETALLES. El detalle del producto contiene su título, descripción, precio, total, subtotal, imagen, botones para incrementar la cantidad de productos deseados y un botón para agregar el producto al carrito de compras.
 
-En el carrito contiene un resumen de los productos seleccionados para la compra con sus respectivas opciones para incrementar o no la cantidad deseada y eliminar el item de la lista, el valor total de la compra, un botón para vaciar el carrito y un boton para continuar al checkout.
+En el carrito se puede visualizar un resumen de los productos seleccionados para la compra con sus respectivas opciones para incrementar o no la cantidad deseada y eliminar el item de la lista, el valor total de la compra, un botón para vaciar el carrito y un botón para continuar al checkout.
 
-En el checkout el usuario deberá finalizar la compra. Si el usuario no ingreso a la página previamente o no se encuentra registrado, va a tener un pequeño formulario en donde prodrá ingresar sus datos para poder validar la compra; si el usuario inicio session previamente, no se le pedirá que ingrese sus datos. Una vez finalizada la compra se le dara el feedback con el id para su seguimiento.
+En el checkout el usuario deberá finalizar la compra. Si el usuario no ingresó a la página previamente o no se encuentra registrado, tendrá que ingresar un pequeño formulario con sus datos para poder validar la compra; si el usuario ya inició sesión previamente, no se le pedirá que ingrese sus datos. Una vez finalizada la compra se le dará el feedback con el id para su seguimiento.
 
-Un usuario podrá registrarse en la página accediendo al menú "ingresar", una vez allí podra iniciar session o crear una cuenta.
+Un usuario podrá registrarse en la página accediendo al menú "ingresar", una vez allí podrá iniciar sesión o crear una cuenta.
 Para crear una cuenta, deberá hacer click en "¿No tiene una cuenta? Cree una." en donde se le pedirá que ingrese los datos correspondientes.
 
-Para iniciar session el usuario podrá seleccionar dos formas:
-  * ingresar mediante email y contraseña con previo registro en la página.
+Para iniciar sesión el usuario podrá elegir entre dos formas:
+  * ingresar mediante e-mail y contraseña con previo registro en la página.
   * ingresar mediante Google.
   
-Una vez iniciada la session se le va a habilitar al usuario la posibilidad de tener una Wishlist en donde guardar sus productos favoritos.
+Una vez iniciada la sesión se le va a habilitar al usuario la posibilidad de tener una Wish-list en donde guardar sus productos favoritos.
 
-Para agregar productos a la wishlist debe hacer click en el icono de corazon que se encuentra en la tarjeta de cada producto.
-Dentro de wishlist puede agregar los productos al carrito o vaciar la lista.
+Para agregar productos a la wishlist debe hacer click en el ícono de corazón que se encuentra en la tarjeta de cada producto.
+Dentro de la wishlist puede agregar los productos al carrito o vaciar la lista.
 Si el usuario agrega los productos al carrito, el listado se vacía.
-La lista de productos deseados solo se guarda en la base de datos cuando el usuario finaliza la session.
+La lista de productos deseados solo se guarda en la base de datos cuando el usuario finaliza la sesión.
 
-## TECNOLOGIAS USADAS
+## TECNOLOGÍAS USADAS
 
-* "@emotion/react":        version "^11.10.4"      Libreria que utiliza Material UI para darle estilos a sus componentes
-* "@emotion/styled":       version "^11.10.4"      Libreria que utiliza Material UI para darle estilos a sus componentes
+* "@emotion/react":        version "^11.10.4"      Librería que utiliza Material UI para darle estilos a sus componentes
+* "@emotion/styled":       version "^11.10.4"      Librería que utiliza Material UI para darle estilos a sus componentes
 * "@fontsource/roboto":    version "^4.5.8"        Utilizada como fuente para los textos de la app.
 * "@mui/icons-material":   version "^5.10.9"       Utilizada para agregar iconos en los componentes.
 * "@mui/material":         version "^5.10.10"      Utilizada para la maquetación de los componentes.

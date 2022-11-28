@@ -15,7 +15,8 @@ A través del siguiente link puede acceder al proyecto:
 
 Una vez dentro del repositorio puede hacer click en el botón "<>Code" en donde podra descargar el proyecto en formato .zip o copiar el link para realizar el clonado a través de Git.
 
-Descargado el proyecto, abra su consola de comandos, ingrese a la carpeta principal del proyecto y ejecute los siguientes comandos: 
+Descargado el proyecto, abra su consola de comandos, ingrese a la carpeta principal del proyecto y ejecute los siguientes comandos:
+
     * $ cd <dirección a la carpeta principal del proyecto> 
     * $ npm install - para instalar la aplicación y sus dependencias. 
     * ....

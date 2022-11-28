@@ -53,13 +53,13 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
 
 ## TECNOLOGIAS USADAS
 
-*   "@emotion/react": "^11.10.4",
-*   "@emotion/styled": "^11.10.4",
-*   "@fontsource/roboto": "^4.5.8".    Utilizada como fuente para los textos de la app.
-*   "@mui/icons-material": "^5.10.9".  Utilizada para agregar iconos en los componentes.
-*   "@mui/material": "^5.10.10".       Utilizada para la maquetación de los componentes.
-*   "firebase": "^9.14.0".             Utilizada para guardar los productos, las ventas, los usuarios registrados y las wish list.
-*    "react": "^18.2.0",               Utilizada para la creación de la app.
-*    "react-dom": "^18.2.0",           Utilizada para proporcionar metodos de acceso al DOM virtual.
-*    "react-router-dom": "^6.4.2",     Utilizada para la navegación dentro de la aplicación.
-*    "react-scripts": "5.0.1",         Utilizada para ejecutar los scripts que vienen al instalar create-react-app. (start, build, test, eject)
+* "@emotion/react":        version "^11.10.4"      Libreria que utiliza Material UI para darle estilos a sus componentes
+* "@emotion/styled":       version "^11.10.4"      Libreria que utiliza Material UI para darle estilos a sus componentes
+* "@fontsource/roboto":    version "^4.5.8"        Utilizada como fuente para los textos de la app.
+* "@mui/icons-material":   version "^5.10.9"       Utilizada para agregar iconos en los componentes.
+* "@mui/material":         version "^5.10.10"      Utilizada para la maquetación de los componentes.
+* "firebase":              version "^9.14.0"       Utilizada para guardar los productos, las ventas, los usuarios registrados y las wish list.
+* "react":                 version "^18.2.0"       Utilizada para la creación de la app.
+* "react-dom":             version "^18.2.0"       Utilizada para proporcionar metodos de acceso al DOM virtual.
+* "react-router-dom":      version "^6.4.2"        Utilizada para la navegación dentro de la aplicación.
+* "react-scripts":         version "5.0.1"         Utilizada para ejecutar los scripts que vienen al instalar create-react-app. (start, build, test, eject)

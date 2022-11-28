@@ -3,7 +3,7 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
- function SnackbarDialog({abrir,setAbrir,mensaje}) {
+ function SnackbarDialog({abrir,setAbrir,mensaje,tiempo=2000}) {
 
   const handleClose = (reason) => {
     if (reason === 'clickaway') {
@@ -28,7 +28,7 @@ import CloseIcon from "@mui/icons-material/Close";
     <div>
       <Snackbar
         open={abrir}
-        autoHideDuration={2000}
+        autoHideDuration={tiempo}
         onClose={handleClose}
         message={mensaje}
         action={action}

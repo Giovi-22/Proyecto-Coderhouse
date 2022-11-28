@@ -40,7 +40,7 @@ function Formulario({userData,registrar}){
 
 useEffect(()=>{
     if(datos.email !== "" && datos.confirmar_email !== ""){     
-        if(datos.email === datos.confirmar_email && datos.password.length >= 5){
+        if(datos.email === datos.confirmar_email && datos.password.length >= 4){
             setDisabled(false);
         }else{
             setDisabled(true);

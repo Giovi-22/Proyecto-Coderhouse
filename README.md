@@ -6,6 +6,8 @@ La app está diseñada utilizando la librería de JavaScript React.JS
 
 Dentro de esta aplicación web podrás navegar a través de las categorías de los diferentes productos, ver sus respectivos detalles, agregarlos al carrito y realizar una compra online. En la sección USANDO LA APLICACION se explicará detalladamente el su uso.
 
+Al final de este documento hay un archivo GIF del uso de la app e imágenes de como se ven los archivos en la base de datos.
+
 
 ## INSTALACION 
 Para instalar la app es necesario descargar los archivos del repositorio o bien, si utiliza la aplicación Git, puede clonar el repositorio directamente desde consola.
@@ -68,11 +70,13 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
  ![Entrega final Barolin](https://user-images.githubusercontent.com/98109747/204173186-22d5f172-98f9-4cc4-b4bd-c04bc42e82bd.gif)
  
  ##IMAGENES
- ### Firebase
- #### Productos
+### Firebase
+#### Productos
  ![Firebase-productos](https://user-images.githubusercontent.com/98109747/204173262-e628aa50-f557-4896-ab67-0f829d4b5813.jpg)
- #### Ventas
+#### Ventas
 ![Firebase-ventas](https://user-images.githubusercontent.com/98109747/204173265-e0d3f612-8ac5-4091-b374-94da9456b96f.jpg)
 #### Wish list
 ![Firebase-wishlist](https://user-images.githubusercontent.com/98109747/204173275-4b5c8aa5-7535-4b24-ac33-b928e775b9c3.jpg)
+#### Usuarios registrados
+![Usuarios registrados](https://user-images.githubusercontent.com/98109747/204173782-dde1f87c-5345-477c-83be-c5b8671763aa.jpg)
 

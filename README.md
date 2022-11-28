@@ -51,3 +51,15 @@ Dentro de wishlist puede agregar los productos al carrito o vaciar la lista.
 Si el usuario agrega los productos al carrito, el listado se vacía.
 La lista de productos deseados solo se guarda en la base de datos cuando el usuario finaliza la session.
 
+## TECNOLOGIAS USADAS
+
+*   "@emotion/react": "^11.10.4",
+*   "@emotion/styled": "^11.10.4",
+*   "@fontsource/roboto": "^4.5.8".    Utilizada como fuente para los textos de la app.
+*   "@mui/icons-material": "^5.10.9".  Utilizada para agregar iconos en los componentes.
+*   "@mui/material": "^5.10.10".       Utilizada para la maquetación de los componentes.
+*   "firebase": "^9.14.0".             Utilizada para guardar los productos, las ventas, los usuarios registrados y las wish list.
+*    "react": "^18.2.0",               Utilizada para la creación de la app.
+*    "react-dom": "^18.2.0",           Utilizada para proporcionar metodos de acceso al DOM virtual.
+*    "react-router-dom": "^6.4.2",     Utilizada para la navegación dentro de la aplicación.
+*    "react-scripts": "5.0.1",         Utilizada para ejecutar los scripts que vienen al instalar create-react-app. (start, build, test, eject)

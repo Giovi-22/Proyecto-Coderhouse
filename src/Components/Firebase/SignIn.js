@@ -45,23 +45,21 @@ const googleButtonStyle = {
 
 function SignIn(){
     const [redirect,setRedirect] = useState(false);
-    const [openSnackbar,setOpenSnackbar] = useState({estado:false,error:false,mensaje:""});
+    const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
+    const [datos, setDatos] = useState({email:"", password:""});
     const valordelContexto = useContext(context);
     const {setUser,setIslogged} = valordelContexto;
-    const [datos, setDatos] = useState({
-        email:"",
-        password:""
-    });
+
 
 
     async function handleDefault(){
         try {
             const resultado = await SignInUser(datos.email,datos.password);
-            setIslogged(true);
             setUser(resultado.user);
-            setOpenSnackbar({estado:true,error:false,mensaje:"Usuario ingresado existosamente!"});
+            setIslogged(true);
+            setSnackbar({state:true,error:false,message:"Usuario ingresado existosamente!",time:2000});
         } catch (error) {
-            setOpenSnackbar({estado:true,error:true,mensaje:"usuario o contraseña incorrecta. Usuario no existe"});
+            setSnackbar({state:true,error:true,message:error.message,time:3000});
         }
         
         
@@ -69,11 +67,11 @@ function SignIn(){
     async function handleGoogle(){
         try {
             const resultado = await SignInWithGoogle();
+            setSnackbar({state:true,error:false,message:"Usuario ingresado existosamente!",time:2000});
             setIslogged(true);
-            setOpenSnackbar({estado:true,error:false, mensaje:"Usuario ingresado existosamente!"});
             setUser(resultado.user);
         } catch (error) {
-            setOpenSnackbar({estado:true,error:true,mensaje:"usuario o contraseña incorrecta. Usuario no existe"});
+            setSnackbar({state:true,error:true,message:error.message,time:3000});
 
         }
         
@@ -84,14 +82,13 @@ function SignIn(){
         setDatos(prevValue => ({...prevValue,[id]:value}));
 }
 
-    function handleOpen(){
-        if(openSnackbar.error === false){
-            setRedirect(true);
-            setOpenSnackbar({estado:false,error:false,mensaje:""});
+    function handleClose(){
+        if(snackBar.error){
+            setRedirect(false); 
         }else{
-            setOpenSnackbar({estado:false,error:true,mensaje:""});
+            setRedirect(true);
         }
-        
+        setSnackbar((prevValue)=>({...prevValue,state:false}));
     }
    
     return(
@@ -106,7 +103,7 @@ function SignIn(){
                 <Button sx={googleButtonStyle}variant="contained" onClick={handleGoogle} startIcon=<GoogleIcon /> id="google">Sign in with Google</Button>
                 <Typography variant="subtitle1" >¿No tiene una cuenta? <Link to="/singup">Cree una.</Link></Typography>
                 </Box>
-                <SnackbarDialog abrir={openSnackbar.estado} setAbrir={handleOpen} mensaje={openSnackbar.mensaje}/>
+                <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.message}/>
                 {redirect && <Navigate to="/productos" />}
         </Box>
     );

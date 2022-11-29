@@ -6,33 +6,36 @@ import { Navigate } from "react-router-dom";
 import SnackbarDialog from "../Main/SnackbarDialog";
 
 function SignUpForm(){
-    const [register,setRegister] = useState(false);
+    const [redirect,setRedirect] = useState(false);
     const valordelContexto = useContext(context);
     const {setUser,setIslogged} = valordelContexto;
-    const [snackBar,setSnackbar] = useState({estado:false,error:false,mensaje:"",tiempo:2000});
+    const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
 
 
-    function handleAbrir(){
-        setSnackbar({estado:false,error:false,mensaje:"",tiempo:2000});
-        setRegister(true);
-        setIslogged(true);
+    function handleClose(){
+        if(snackBar.error){
+            setRedirect(false);
+            setIslogged(false);
+        }else{
+            setRedirect(true);
+            setIslogged(true);
+        }
+        snackBar((prevValue)=>({...prevValue,state:false}));
     }
 
 
    async function registrar(data){
     try {
         await CreateUser(data.email,data.password);
-        setSnackbar({estado:true,error:false,mensaje:"Usuario creado exitosamente!"});
+        setSnackbar({state:true,error:false,mensaje:"Usuario creado exitosamente!",time:2000});
         try {
             UpdateUser(data.nombre);
-            
         } catch (error) {  
-                    console.log(error);
+            setSnackbar({state:true,error:true,message: error.message ,time:3000});
         }
         setUser(auth.currentUser);
     } catch (error) {
-        setSnackbar({estado:true,error:true,mensaje: error.message ,tiempo:2000});
-        console.log(error.message);
+        setSnackbar({state:true,error:true,message: error.message ,time:3000});
     }
 
    }
@@ -40,8 +43,8 @@ function SignUpForm(){
     return (
                 <>
                     <Formulario registrar={registrar}/>
-                    <SnackbarDialog abrir={snackBar.estado} setAbrir={handleAbrir} mensaje={snackBar.mensaje} tiempo={snackBar.tiempo} />
-                    {register && <Navigate to="/productos" />}
+                    <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.mensaje} time={snackBar.time} />
+                    {redirect && <Navigate to="/productos" />}
                 </>
 
                 

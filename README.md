@@ -85,4 +85,4 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
 #### Usuarios registrados
 ![Usuarios registrados](https://user-images.githubusercontent.com/98109747/204173782-dde1f87c-5345-477c-83be-c5b8671763aa.jpg)
 
->>>>>>> 776cdddcf59b0d5916b1184c7c84eea372ef7e20
+

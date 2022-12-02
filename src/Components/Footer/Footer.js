@@ -10,10 +10,10 @@ function Footer(){
     return (
             <footer className="containerFooter">
                    <div className="footerLinks">
-                        {navLinks.map((value)=><NavLinks key={value.id} href={value.url} title={value.titulo} type="type2" />)}
+                        {navLinks.map((value,index)=><NavLinks key={`${value.id}${index}`} id={value.id} href={value.url} title={value.titulo} type="type2" />)}
                    </div>
                    <div className="footerContact">
-                        {socialLinks.map((value)=><NavLinks key={value.id} href={value.url} icon={value.icon}  title={value.titulo} type="type3" />)}
+                        {socialLinks.map((value,index)=><NavLinks key={`${value.id}${index}`} id={value.id} href={value.url} icon={value.icon}  title={value.titulo} type="type3" />)}
                    </div>
                    <Typography className="copyright" color="white" align="center" variant="body1" >Copyright © 2022 | CB3DESIGN | Creado por Giovi</Typography>
             </footer>

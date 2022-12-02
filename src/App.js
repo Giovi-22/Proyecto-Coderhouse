@@ -31,7 +31,7 @@ const theme = createTheme({
                 },
         text:{
             primary: grey[700],
-            secondary: "#fff"
+            secondary: "#747a76"
                 },
         background:{
             custom: "#e67070"   
@@ -40,7 +40,7 @@ const theme = createTheme({
             },
     typography:{
         fontFamily: "roboto"
-                }
+                },
 });
 
 

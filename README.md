@@ -63,3 +63,4 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
 * "react-dom":             version "^18.2.0"       Utilizada para proporcionar metodos de acceso al DOM virtual.
 * "react-router-dom":      version "^6.4.2"        Utilizada para la navegación dentro de la aplicación.
 * "react-scripts":         version "5.0.1"         Utilizada para ejecutar los scripts que vienen al instalar create-react-app. (start, build, test, eject)
+* "formik":                version "^2.2.9"        Utilizada para la creación de formularios.

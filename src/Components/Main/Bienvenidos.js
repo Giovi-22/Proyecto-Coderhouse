@@ -1,13 +1,11 @@
 import React from "react";
-
+import { Typography } from "@mui/material";
 
 function Bienvenidos(){
 
-
     return(
             <div className="bienvenidos">
-                <h1>BIENVENIDOS A CB3DESIGN ROSARIO</h1> 
-                <h2>SITIO EN CONSTRUCCION</h2>
+                <Typography variant="h3">BIENVENIDOS A CB3DESIGN ROSARIO</Typography> 
             </div>
     );
 }

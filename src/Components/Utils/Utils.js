@@ -72,17 +72,106 @@ export const navLinks=[
 export const socialLinks=[
     {titulo:"cb3d.desingrosario@gmail.com",
      url: "/",
-     icon: <MailIcon />},
+     icon: <MailIcon />,
+     id:1},
     {titulo:"+543416965696",
      url:"/",
-     icon: <SmartphoneIcon />},
+     icon: <SmartphoneIcon />,
+     id:2},
     {titulo:"+543416965696",
      url:"https://web.whatsapp.com/",
-     icon: <WhatsAppIcon />},
+     icon: <WhatsAppIcon />,
+     id:3},
     {titulo:"/cb3d.design",
      url:"/",
-     icon: <FacebookIcon />},
+     icon: <FacebookIcon />,
+     id:4},
     {titulo:"cb3ddesign.rosario",
      url:"https://www.instagram.com/cb3ddesign.rosario/?hl=es",
-     icon: <InstagramIcon />}
+     icon: <InstagramIcon />,
+     id:5}
     ];
+
+export const signupForm=[
+        {
+        id:"firstName",
+        name:"firstName",
+        label:"Nombre ",
+        type:"text",
+        placeHolder:"Nombre"
+        },
+        {
+        id:"lastName",
+        name:"lastName",
+        label:"Apellido ",
+        type:"text",
+        placeHolder:"Apellido"
+        },
+        {
+        id:"email",
+        name:"email",
+        label:"Email ",
+        type:"text",
+        placeHolder:"Email: alguien@ejemplo.com"
+        },
+        {
+        id:"confirm_email",
+        name:"confirm_email",
+        label:"Confirmar email ",
+        type:"text",
+        placeHolder:"Email: alguien@ejemplo.com"
+        },
+        {
+        id:"password",
+        name:"password",
+        label:"Password",
+        type:"password",
+        placeHolder:"Password"
+        }
+];
+export const checkoutForm=[
+        {
+        id:"firstName",
+        name:"firstName",
+        label:"Nombre ",
+        type:"text",
+        placeHolder:"Nombre"
+        },
+        {
+        id:"lastName",
+        name:"lastName",
+        label:"Apellido ",
+        type:"text",
+        placeHolder:"Apellido"
+        },
+        {
+        id:"email",
+        name:"email",
+        label:"Email ",
+        type:"text",
+        placeHolder:"Email: alguien@ejemplo.com"
+        },
+        {
+        id:"confirm_email",
+        name:"confirm_email",
+        label:"Confirmar email ",
+        type:"text",
+        placeHolder:"Email: alguien@ejemplo.com"
+        }
+];
+export const signinForm=[
+        {
+        id:"email",
+        name:"email",
+        label:"Email ",
+        type:"text",
+        placeHolder:"Email: alguien@ejemplo.com"
+        },
+        {
+        id:"password",
+        name:"password",
+        label:"Password",
+        type:"password",
+        placeHolder:"Password"
+        }
+];

@@ -60,7 +60,7 @@ function ItemDetail({product,onCount,addToContext,isLogged}){
                     <Typography color="inherit" variant="h4" >{product.name}</Typography>
                     <Typography color="inherit" variant="body1" >{product.description}</Typography>
                 <Box sx={countStyle}>
-                    <Typography gutterTop color="inherit" variant="h6" >Cantidad</Typography>
+                    <Typography color="inherit" variant="h6" >Cantidad</Typography>
                     <ItemCount stock={product.stock} onCount={(count)=>onCount(count)} cuantity={product.cantidad}/>
                 </Box>
                     <Typography color="inherit" variant="h3" sx={{alignSelf:"center"}} >${product.price}</Typography>

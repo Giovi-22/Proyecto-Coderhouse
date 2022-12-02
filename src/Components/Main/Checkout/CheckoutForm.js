@@ -1,30 +1,12 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import FinishModal from "./FinishModal";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CheckIcon from '@mui/icons-material/Check';
 import { context } from "../../../CustomProvider";
-
-const formStyle={
-    display:"flex",
-    width:"500px",
-    height:"300px",
-    marginBottom: "10px",
-    border:"1px solid #80808045",
-    borderRadius: "15px",
-    flexWrap:"wrap",
-    justifyContent:"space-around",
-    alignItems:"center",
-
-}
-const inputStyle={
-        width:"200px",
-        height:"56px",
-        borderRadius:"5px",
-        border:"1px solid #80808045",
-        paddingLeft:"5px"
-}
+import { checkoutForm } from "../../Utils/Utils";
+import Formulario from "../Formulario";
 
 const buttonStyle={
     width:"100%",
@@ -34,48 +16,24 @@ const buttonStyle={
 }
 
 function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
-    const [disabled,setDisabled] = useState(true);
     const [open,setOpen] = useState(false);
     const [redireccionar,setRedirect] = useState(false);
     const valordelContexto = useContext(context);
     const {Usuario} = valordelContexto;
-    const [datos, setDatos] = useState({
-        nombre:"",
-        apellido:"",
-        email:"",
-        confirmar_email:"",
-        telefono:""
-    });
 
 
-    function handleChange(event){
-            const {id,value} = event.target;
-            setDatos(prevValue => ({...prevValue,[id]:value}));
-    }
-    function handleClick(){
-                endPurchase(datos);
+    function handleClick(data){
+                endPurchase(data);
                 setOpen(true);     
     }
     function handleClose(){
-            setOpen(false);
-            setDatos({})      
+            setOpen(false);   
             vaciarCarrito();         
     }
     function redirect(){
         setRedirect(true);
     }
-    useEffect(()=>{
-        if(datos.email !== "" && datos.confirmar_email !== ""){     
-            if(datos.email === datos.confirmar_email){
-                setDisabled(false);
-            }else{
-                setDisabled(true);
-            }
-        }
-        if(Object.keys(Usuario).length !== 0 ){
-            setDisabled(false);
-        }       
-    },[datos.email,datos.confirmar_email])
+
 
     return(
 
@@ -85,13 +43,7 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
             {Object.keys(Usuario).length !== 0 ? 
                 <Typography variant="h4" >Comprar como {Usuario.email}</Typography>
                  :
-                <form style={formStyle} >
-                        <input onChange={handleChange} value={datos.nombre} type="text" placeholder="Nombre" style={inputStyle} id="nombre"/>
-                        <input onChange={handleChange} value={datos.apellido} type="text" placeholder="Apellido" style={inputStyle} id="apellido"/>
-                        <input onChange={handleChange} value={datos.email} type="text" placeholder="email@example.com" style={inputStyle} id="email"/>
-                        <input onChange={handleChange} value={datos.confirmar_email} type="text" placeholder="email@example.com" style={inputStyle} id="confirmar_email"/>
-                        <input onChange={handleChange} value={datos.telefono} type="text" placeholder="Telefono" style={inputStyle} id="telefono"/>
-                </form>
+               <Formulario inputs={checkoutForm} buttonTitle="FINALIZAR COMPRA" datos={handleClick}/>
             }
                 <Box sx={{marginLeft:"30px",padding:"10px 0"}}>
                     <ul>
@@ -100,8 +52,18 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
                 </Box>
             </Box>
             <Box sx={{display:"flex",justifyContent:"space-around", width:"100%"}}>
-                <Button variant="contained" disabled={disabled} onClick={handleClick}>Finalizar Compra</Button>
                 <Typography variant="h5" >Total: {Total.toFixed(2)}</Typography>
+                {Object.keys(Usuario).length && 
+                <Button 
+                variant="outlined" 
+                onClick={()=>handleClick({
+                    email:Usuario.email,
+                    nombre:Usuario.displayName,
+                    id:Usuario.uid})}
+                    >
+                    Finalizar compra
+                    </Button>
+                }
             </Box>
                 {open && <FinishModal enabled={open} close={handleClose} redirect={redirect} />}
                 {redireccionar && <Navigate to="/productos" />}
@@ -110,3 +72,9 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
 }
 
 export default CheckoutForm;
+
+/*
+ <form style={formStyle} >
+                {checkoutForm.map(input => <TextField key={input.id} onChange={handleChange} value={datos[input.id]}  id={input.id} label={input.label} placeholder={input.placeHolder} focused />)}
+                </form>
+*/

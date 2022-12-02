@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import { CreateUser, UpdateUser,auth } from "./Firestore";
-import Formulario from "../Main/Checkout/Formulario";
 import {context} from "../../CustomProvider";
 import { Navigate } from "react-router-dom";
 import SnackbarDialog from "../Main/SnackbarDialog";
+import Formulario from "../Main/Formulario";
+import { checkoutForm } from "../Utils/Utils";
 
-function SignUpForm(){
+function SignUpContainer(){
     const [redirect,setRedirect] = useState(false);
     const valordelContexto = useContext(context);
     const {setUser,setIslogged} = valordelContexto;
@@ -25,11 +26,12 @@ function SignUpForm(){
 
 
    async function registrar(data){
+
     try {
         await CreateUser(data.email,data.password);
         setSnackbar({state:true,error:false,mensaje:"Usuario creado exitosamente!",time:2000});
         try {
-            UpdateUser(data.nombre);
+            UpdateUser(data.firstName);
         } catch (error) {  
             setSnackbar({state:true,error:true,message: error.message ,time:3000});
         }
@@ -42,7 +44,7 @@ function SignUpForm(){
 
     return (
                 <>
-                    <Formulario registrar={registrar}/>
+                    <Formulario inputs={checkoutForm} buttonTitle="REGISTRARSE" datos={registrar}/>
                     <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.mensaje} time={snackBar.time} />
                     {redirect && <Navigate to="/productos" />}
                 </>
@@ -51,4 +53,4 @@ function SignUpForm(){
     )
 }
 
-export default SignUpForm;
+export default SignUpContainer;

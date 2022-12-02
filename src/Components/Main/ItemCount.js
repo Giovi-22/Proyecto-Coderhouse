@@ -39,7 +39,7 @@ function ItemCount({stock, onCount, cuantity=1}){
     return(
         <Box sx={itemCountStyle}>
             <IconButton onClick={handleResta} color="primary" disabled={count <= 1 ? true:false}> <RemoveIcon /> </IconButton>
-            <Typography color="inherit" variant="h6" > {count} </Typography>
+            <Typography component="spam" color="inherit" variant="h6" > {count} </Typography>
             <IconButton onClick={handleSuma} color="primary" disabled={count >= stock ? true:false}> <AddIcon /> </IconButton> 
         </Box>
     );

@@ -5,27 +5,10 @@ import { context } from "../../CustomProvider";
 import { SignInWithGoogle, SignInUser} from "../Firebase/Firestore";
 import GoogleIcon from '@mui/icons-material/Google';
 import SnackbarDialog from "../Main/SnackbarDialog";
+import Formulario from "../Main/Formulario";
+import { signinForm } from "../Utils/Utils";
 
 
-const formStyle={
-    display:"flex",
-    width:"300px",
-    height:"300px",
-    margin: "0 10px",
-    border:"1px solid #80808045",
-    borderRadius: "15px",
-    flexDirection:"column",
-    justifyContent:"space-around",
-    alignItems:"center"
-
-}
-const inputStyle={
-    width:"200px",
-    height:"56px",
-    borderRadius:"5px",
-    border:"1px solid #80808045",
-    paddingLeft:"5px"
-}
 const boxStyle ={
         display: "flex",
 
@@ -34,7 +17,8 @@ const boxAccountStyle = {
         display: "flex",
         flexDirection:"column",
         justifyContent:"flex-end",
-        alignItems:"flex-start"
+        alignItems:"flex-start",
+        marginLeft:"10px"
 }
 const googleButtonStyle = {
             width:"200px",
@@ -46,13 +30,12 @@ const googleButtonStyle = {
 function SignIn(){
     const [redirect,setRedirect] = useState(false);
     const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
-    const [datos, setDatos] = useState({email:"", password:""});
     const valordelContexto = useContext(context);
     const {setUser,setIslogged} = valordelContexto;
 
 
 
-    async function handleDefault(){
+    async function handleDefault(datos){
         try {
             const resultado = await SignInUser(datos.email,datos.password);
             setUser(resultado.user);
@@ -61,8 +44,6 @@ function SignIn(){
         } catch (error) {
             setSnackbar({state:true,error:true,message:error.message,time:3000});
         }
-        
-        
     }
     async function handleGoogle(){
         try {
@@ -77,10 +58,6 @@ function SignIn(){
         
     }
 
-    function handleChange(event){
-        const {id,value} = event.target;
-        setDatos(prevValue => ({...prevValue,[id]:value}));
-}
 
     function handleClose(){
         if(snackBar.error){
@@ -94,11 +71,7 @@ function SignIn(){
     return(
         <Box sx={boxStyle}>
 
-                <form style={formStyle} >
-                        <input onChange={handleChange} value={datos.email} type="text" placeholder="email@example.com" style={inputStyle} id="email"/>
-                        <input onChange={handleChange} value={datos.password} type="password" placeholder="Password" style={inputStyle} id="password"/>
-                        <Button variant="contained" onClick={handleDefault} id="default">Sign In</Button>
-                </form>
+                <Formulario inputs={signinForm} datos={handleDefault} buttonTitle="Sign In"/>
                 <Box sx={boxAccountStyle}>
                 <Button sx={googleButtonStyle}variant="contained" onClick={handleGoogle} startIcon=<GoogleIcon /> id="google">Sign in with Google</Button>
                 <Typography variant="subtitle1" >¿No tiene una cuenta? <Link to="/singup">Cree una.</Link></Typography>

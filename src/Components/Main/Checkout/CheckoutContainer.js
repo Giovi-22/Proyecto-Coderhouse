@@ -10,16 +10,9 @@ function CheckoutContainer(){
     const {products,vaciarCarrito,setSaleId,Total,Usuario} = valorDelContexto;
 
     function endPurchase(data){
-            if(Object.keys(Usuario).length){
-                console.log("usuario registrado");
-                const userData = {email:Usuario.email,nombre:Usuario.displayName};
-                setSale(()=>({userData,products,total:Total}));
-            }else{
-                console.log("usuario no registrado");
                 setSale(()=>({data,products,total:Total}));
             }
             
-  }
   useEffect(()=>{
             if(Object.keys(sale).length !== 0){
                 const response = addSaleToCollection(sale);

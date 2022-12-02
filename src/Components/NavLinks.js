@@ -6,7 +6,7 @@ import {Link as Links} from "@mui/material";
 
 
 
-function NavLinks({href,title,icon=null,type}){
+function NavLinks({href,title,icon=null,type,id}){
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const secondary = theme.palette.secondary.main;
@@ -32,9 +32,9 @@ function NavLinks({href,title,icon=null,type}){
             };
     
     const linkType ={
-                type1: <Button sx={buttonStyle} component={Link} to={href} variant="text">{title}</Button>,
-                type2: <Links sx={linkStyle} component={Link} to={href} underline="none" variant="body1">{icon} {title}</Links>,
-                type3: <Links sx={linkStyle}  href={href} underline="none" variant="body1">{icon} {title}</Links>
+                type1: <Button key={id} sx={buttonStyle} component={Link} to={href} variant="text">{title}</Button>,
+                type2: <Links key={id} sx={linkStyle} component={Link} to={href} underline="none" variant="body1">{icon} {title}</Links>,
+                type3: <Links key={id} sx={linkStyle}  href={href} underline="none" variant="body1">{icon} {title}</Links>
             }
     return(
             <>

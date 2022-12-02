@@ -25,8 +25,7 @@ const googleButtonStyle = {
             height:"40px",
             margin:"0 0 10px 0"
         }
-
-
+const initialValues = {email:"",password:""};
 function SignIn(){
     const [redirect,setRedirect] = useState(false);
     const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
@@ -71,7 +70,7 @@ function SignIn(){
     return(
         <Box sx={boxStyle}>
 
-                <Formulario inputs={signinForm} datos={handleDefault} buttonTitle="Sign In"/>
+                <Formulario inputs={signinForm} datos={handleDefault} buttonTitle="Sign In" initialvalues={initialValues} />
                 <Box sx={boxAccountStyle}>
                 <Button sx={googleButtonStyle}variant="contained" onClick={handleGoogle} startIcon=<GoogleIcon /> id="google">Sign in with Google</Button>
                 <Typography variant="subtitle1" >¿No tiene una cuenta? <Link to="/singup">Cree una.</Link></Typography>

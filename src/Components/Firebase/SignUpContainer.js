@@ -6,6 +6,7 @@ import SnackbarDialog from "../Main/SnackbarDialog";
 import Formulario from "../Main/Formulario";
 import { checkoutForm } from "../Utils/Utils";
 
+const initialValues = {firstName:"",lastName:"",email:"",confirm_email:"",password:""};
 function SignUpContainer(){
     const [redirect,setRedirect] = useState(false);
     const valordelContexto = useContext(context);
@@ -21,15 +22,16 @@ function SignUpContainer(){
             setRedirect(true);
             setIslogged(true);
         }
-        snackBar((prevValue)=>({...prevValue,state:false}));
+        setSnackbar((prevValue)=>({...prevValue,state:false}));
     }
 
-
    async function registrar(data){
-
+        
+        if(data.email !== undefined){
+        
     try {
         await CreateUser(data.email,data.password);
-        setSnackbar({state:true,error:false,mensaje:"Usuario creado exitosamente!",time:2000});
+        setSnackbar({state:true,error:false,message:"Usuario creado exitosamente!",time:2000});
         try {
             UpdateUser(data.firstName);
         } catch (error) {  
@@ -39,13 +41,16 @@ function SignUpContainer(){
     } catch (error) {
         setSnackbar({state:true,error:true,message: error.message ,time:3000});
     }
-
+    
+}else{
+    setSnackbar({state:true,error:true,message:"completar todos los campos" ,time:3000});
+}
    }
 
     return (
                 <>
-                    <Formulario inputs={checkoutForm} buttonTitle="REGISTRARSE" datos={registrar}/>
-                    <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.mensaje} time={snackBar.time} />
+                    <Formulario inputs={checkoutForm} buttonTitle="REGISTRARSE" datos={registrar} initialvalues={initialValues}/>
+                    <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.message} time={snackBar.time} />
                     {redirect && <Navigate to="/productos" />}
                 </>
 

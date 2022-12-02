@@ -11,46 +11,53 @@ const formStyle={
     marginTop:"10px"
 };
 
-function Formulario({datos,buttonTitle,inputs=[]}){
+function Formulario({datos,buttonTitle,inputs=[],initialvalues={}}){
+
     const validate = (values) =>{
         const errors = {};
-        if(!values.firstName){
-                //errors.firstName = "*";
-            }else if(values.firstName.length > 10){
+            if(Object.hasOwn(values,"firstName")){
+                if(!values.firstName){
+                    errors.firstName = "Completar campo";
+                  }else if(values.firstName.length > 10){
                 errors.firstName ="El nombre debe tener menos de 10 caracteres"
                 }
+              }
+            if(Object.hasOwn(values,"lastName")){
                 if (!values.lastName) {
-                    //errors.lastName = "*";
+                    errors.lastName = "Completar campo";
                   } else if (values.lastName.length > 10) {
                     errors.lastName = "El apellido debe tener menos de 10 caracteres";
                   }
-                
+              }
+            if(Object.hasOwn(values,"email")){
                   if (!values.email) {
-                    //errors.email = "*";
+                    errors.email = "Completar campo";
                   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                     errors.email = "Email invalido";
                   }
-                  if(values.confirm_email.length !== 0){
+              }
+            
+            if(Object.hasOwn(values,"confirm_email")){
                   if(values.confirm_email !== values.email){
                     errors.confirm_email = "Los emails no coinciden"
                   }}
-                  if(values.password.length < 6){
-                    errors.password = "La contraseña debe contener 6 caracteres como mínimo"
+            if(Object.hasOwn(values,"password")){
+                    if(!values.password){
+                        errors.password="Completar password"
+                    } else if(values.password.length < 6){
+                      errors.password = "La contraseña debe contener 6 caracteres como mínimo"
                   }
-                
-                  return errors;
-            };
-    const formik = useFormik({
-            initialValues:{
-                email:"",
-                firstName:"",
-                lastName:"",
-                confirm_email:"",
-                password:""
-            },
+              }
+            return errors;
+          };
+  
+          const formik = useFormik({
+            initialValues:{initialvalues},
+            validateOnMount:true,
             validate,
             onSubmit: values=>datos(values)
             });
+        
 
     return (
             <form style={formStyle} onSubmit={formik.handleSubmit} >
@@ -58,7 +65,7 @@ function Formulario({datos,buttonTitle,inputs=[]}){
             <TextField 
             key={input.id} 
             onChange={formik.handleChange} 
-            onBlur={formik.handleBlur}
+            onBlur={formik.onBlur}
             value={formik.values[input.id]}  
             id={input.id} 
             name={input.name}

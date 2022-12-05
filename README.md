@@ -67,9 +67,7 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
 * "react-dom":             version "^18.2.0"       Utilizada para proporcionar metodos de acceso al DOM virtual.
 * "react-router-dom":      version "^6.4.2"        Utilizada para la navegación dentro de la aplicación.
 * "react-scripts":         version "5.0.1"         Utilizada para ejecutar los scripts que vienen al instalar create-react-app. (start, build, test, eject)
-<<<<<<< HEAD
 * "formik":                version "^2.2.9"        Utilizada para la creación de formularios.
-=======
 
  ## GIF
  ![Entrega final Barolin](https://user-images.githubusercontent.com/98109747/204173186-22d5f172-98f9-4cc4-b4bd-c04bc42e82bd.gif)
@@ -84,5 +82,4 @@ La lista de productos deseados solo se guarda en la base de datos cuando el usua
 ![Firebase-wishlist](https://user-images.githubusercontent.com/98109747/204173275-4b5c8aa5-7535-4b24-ac33-b928e775b9c3.jpg)
 #### Usuarios registrados
 ![Usuarios registrados](https://user-images.githubusercontent.com/98109747/204173782-dde1f87c-5345-477c-83be-c5b8671763aa.jpg)
-
 

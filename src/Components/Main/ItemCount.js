@@ -41,7 +41,7 @@ const iconbuttonStyle={
     return(
         <Box sx={itemCountStyle}>
             <IconButton  onClick={handleResta} color="primary" disabled={count <= 1 ? true:false}> <RemoveIcon sx={iconbuttonStyle}/> </IconButton>
-            <Typography component="spam" color="inherit" variant="h6" > {count} </Typography>
+            <Typography  color="inherit" variant="h6" > {count} </Typography>
             <IconButton  onClick={handleSuma} color="primary" disabled={count >= stock ? true:false}> <AddIcon sx={iconbuttonStyle}/> </IconButton> 
         </Box>
     );

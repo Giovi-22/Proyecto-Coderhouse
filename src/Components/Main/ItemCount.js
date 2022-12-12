@@ -12,14 +12,16 @@ function ItemCount({stock, onCount, cuantity=1}){
 
 
     const itemCountStyle={
-        width: "100px",
-        border:"3px solid",
+        width: {xs:"60px",md:"100px"},
+        border: "2px solid",
         borderColor: bColor,
         borderRadius: "10px",
         display:"flex",
         justifyContent:"space-around",
         alignItems:"center"
-
+}
+const iconbuttonStyle={
+    width: {xs:"14px",md:"24px"},
 }
 
     function handleSuma(){
@@ -38,9 +40,9 @@ function ItemCount({stock, onCount, cuantity=1}){
         }
     return(
         <Box sx={itemCountStyle}>
-            <IconButton onClick={handleResta} color="primary" disabled={count <= 1 ? true:false}> <RemoveIcon /> </IconButton>
+            <IconButton  onClick={handleResta} color="primary" disabled={count <= 1 ? true:false}> <RemoveIcon sx={iconbuttonStyle}/> </IconButton>
             <Typography component="spam" color="inherit" variant="h6" > {count} </Typography>
-            <IconButton onClick={handleSuma} color="primary" disabled={count >= stock ? true:false}> <AddIcon /> </IconButton> 
+            <IconButton  onClick={handleSuma} color="primary" disabled={count >= stock ? true:false}> <AddIcon sx={iconbuttonStyle}/> </IconButton> 
         </Box>
     );
 

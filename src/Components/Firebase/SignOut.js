@@ -3,55 +3,64 @@ import { Navigate } from "react-router-dom";
 import { context } from "../../CustomProvider";
 import SnackbarDialog from "../Main/SnackbarDialog";
 import { addWishlistToCollection } from "../Utils/Utils";
-import { SignOutUser } from "./Firestore";
+import { getUserWishlist, SignOutUser, updateWishlistProduct } from "./Firestore";
 
 
 function SignOut({user,close}){
-    const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
-    const [redirect,setRedirect] = useState(false);
+    const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:1000});
     const valordelContexto = useContext(context);
     const {setUser,setIslogged,vaciarWishlist,wishList} = valordelContexto;
-
     
 
     function handleClose(){
-        if(snackBar.error){
-            setRedirect(false);
-        }else{
+        if(snackBar.error === false){
             setIslogged(false);
             setUser({});
             vaciarWishlist();
-            setRedirect(true);
-            
+            setSnackbar((prevValue)=>({...prevValue,state:false}));
+            close();
         }
-        close();
-        setSnackbar((prevValue)=>({...prevValue,state:false}));
     }
 
 
 useEffect(()=>{
     if(wishList.length !== 0){
-        addWishlistToCollection({user,wishList})
-        .then(result=>{
-            SignOutUser();
-            setSnackbar({state:true, error:false, message:`Wishlist archivada con el siguiente id ${result.id}`,time:2000});
-        })
-        .catch(() => {
-            setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar guardar la wishlist",time:3000});
-        });
+        getUserWishlist(user.id)
+        .then(docs=>{
+            const wishlistId= docs.docs[0].id;
+            if(docs.empty){
+                addWishlistToCollection({user,wishList})
+                .then(result=>{
+                    SignOutUser();
+                    setSnackbar({state:true, error:false, message:`Wishlist archivada con el siguiente id ${result.id}`,time:1000});   
+                })
+                .catch(() => {
+                    setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar guardar la wishlist",time:2000});
+                })
+            }else{
+                console.log(wishlistId)
+                updateWishlistProduct(wishlistId,wishList)
+                .then(()=>{
+                    SignOutUser();
+                    setSnackbar({state:true, error:false, message:"Wishlist actualizada!",time:1000});   
+                })
+                .catch(() => {
+                    setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar actualizar la wishlist",time:2000});
+                })
+            }})
+        .catch(error=>console.log(error));
 
 }else{
             SignOutUser();
-            setSnackbar({state:true, error:false, message:"La sesión ha finalizado",time:2000});
+            setSnackbar({state:true, error:false, message:"La sesión ha finalizado",time:1000});
 }
 
-},[snackBar.state])
+},[])
 
 
     return(
             <>
                 <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.message} time={snackBar.time} />
-                {redirect && <Navigate to="/productos" />}
             </>
             
     );

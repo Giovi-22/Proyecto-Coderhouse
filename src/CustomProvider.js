@@ -16,6 +16,7 @@ function CustomProvider({children}){
         addProducts: handleProducts,
         deleteProduct: handleDelete,
         addProductToWishList: addProductToWishList,
+        fillWishlist:fillWishlist,
         deleteProductToWishList: deleteProductToWishList,
         updateCart:updateCart,
         updateProductCuantity:updateProductCuantity,
@@ -39,6 +40,9 @@ function CustomProvider({children}){
                 setWishlist([...wishList,product]);
             }else{
             }
+    }
+    function fillWishlist(products){
+            setWishlist(products);
     }
 
     function deleteProductToWishList(productID){
@@ -93,6 +97,14 @@ function CustomProvider({children}){
                     element.subTotal = element.price * count;
                 }});
             updateCartCuantity(array);
+            setProducts(array);
+    }
+    function updateProduct(property,value,productId){
+        let array = [...products];
+        array.forEach(product=>{
+            if(product.id === productId){
+                product[property]=value;
+            }});
             setProducts(array);
     }
 

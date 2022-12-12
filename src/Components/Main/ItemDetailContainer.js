@@ -37,12 +37,10 @@ function ItemDetailContainer(){
     },[id])
 
     return(
-            <div className="main">
                 <div className="itemsContainer">
                 {Object.keys(item).length === 0 ?<CircularProgress /> :<ItemDetail product={item} onCount={handleCount} addToContext={addToContext} isLogged={Logged}/>}
                 {error && <DialogBox titulo="Error" descripcion="El producto seleccionado no existe!" abrir={true}/>}
                 </div>               
-            </div>
     );
 }
 

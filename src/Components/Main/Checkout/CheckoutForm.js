@@ -13,7 +13,7 @@ const buttonStyle={
     width:"100%",
     height:"30px",
     justifyContent:"flex-start",
-    marginBottom:"10px"
+    margin:"20px 0"
 }
 
 const initialValues = {firstName:"",lastName:"",email:"",confirm_email:""};
@@ -49,15 +49,15 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
 
     return(
 
-            <>
+        <>
             <Button startIcon={<ArrowBackIosIcon />} component={Link} to="/carrito" sx={buttonStyle} variant="outlined">Carrrito</Button>
-            <Box sx={{display:"flex",justifyContent:"space-between"}}>
-            {Object.keys(Usuario).length !== 0 ? 
-                <Typography variant="h4" >Comprar como {Usuario.email}</Typography>
-                 :
-               <Formulario inputs={checkoutForm} buttonTitle="FINALIZAR COMPRA" datos={handleClick} initialvalues={initialValues}/>
-            }
-                <Box sx={{marginLeft:"30px",padding:"10px 0",display:"flex",flexDirection:"column"}}>
+            <Box sx={{display:"flex",justifyContent:"space-between",flexDirection:{xs:"column",md:"row"}}}>
+                {Object.keys(Usuario).length !== 0 ? 
+                    <Typography variant="h4" >Comprar como {Usuario.email}</Typography>
+                     :
+                <Formulario inputs={checkoutForm} buttonTitle="FINALIZAR COMPRA" datos={handleClick} initialvalues={initialValues}/>
+                }
+                <Box sx={{margin:"10px 0 0 30px",padding:"10px 0",display:"flex",flexDirection:"column"}}>
                     <ul>
                         {products.map(value => <Typography key={value.id} variant="h6" color="primary"><CheckIcon/> {value.name}</Typography>)}
                     </ul>
@@ -83,7 +83,7 @@ function CheckoutForm({endPurchase,vaciarCarrito,products,Total}){
                 {open && <FinishModal enabled={open} close={handleClose} redirect={redirect} />}
                 <SnackbarDialog open={snackBar.state} setClose={handleSnackbar} message={snackBar.message} time={snackBar.time} />
                 {redireccionar && <Navigate to="/productos" />}
-            </>
+        </>
     );
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./Components/Header/NavBar";
-import {createTheme, ThemeProvider} from "@mui/material";
+import {createTheme, responsiveFontSizes, ThemeProvider} from "@mui/material";
 import "@fontsource/roboto";
 import { grey } from "@mui/material/colors";
 import { BrowserRouter} from "react-router-dom";
@@ -8,7 +8,7 @@ import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
 import CustomProvider from "./CustomProvider";
 
-const theme = createTheme({
+let theme = createTheme({
     breakpoints:{
         values:{
             xs:0,
@@ -42,8 +42,7 @@ const theme = createTheme({
         fontFamily: "roboto"
                 },
 });
-
-
+ theme = responsiveFontSizes(theme);
 function App(){
 
     return (

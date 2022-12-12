@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { collection, doc, FieldPath, getDocs, getFirestore, query, QuerySnapshot, updateDoc, where } from "firebase/firestore";
 import { getAuth, signOut, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword} from "firebase/auth";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
@@ -20,6 +20,8 @@ const provider = new GoogleAuthProvider();
 
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+const salesCollections = collection(db,"ventas");
+const wishlistCollections = collection(db,"wishlist");
 
 export function CreateUser(email,password){
   const user = createUserWithEmailAndPassword(auth,email,password);
@@ -51,4 +53,18 @@ export function User(){
           }else{
             return user;
       }
+}
+
+export function getUserSale(){
+     const result = query(salesCollections,where("data.email","==","giovannibarolin@gmail.com"));   
+      return getDocs(result);
+}
+export function getUserWishlist(userId){
+    const result = query(wishlistCollections,where("user.id","==",userId));
+    return getDocs(result);
+}
+
+export  function updateWishlistProduct(userId,wishlist){
+    const documentReference = doc(wishlistCollections,userId);
+    return updateDoc(documentReference,"wishList",wishlist);
 }

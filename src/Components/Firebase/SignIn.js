@@ -1,24 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Link, Navigate } from "react-router-dom";
 import { context } from "../../CustomProvider";
-import { SignInWithGoogle, SignInUser} from "../Firebase/Firestore";
+import { SignInWithGoogle, SignInUser, getUserWishlist} from "../Firebase/Firestore";
 import GoogleIcon from '@mui/icons-material/Google';
 import SnackbarDialog from "../Main/SnackbarDialog";
 import Formulario from "../Main/Formulario";
 import { signinForm } from "../Utils/Utils";
 
 
-const boxStyle ={
-        display: "flex",
 
-}
 const boxAccountStyle = {
         display: "flex",
         flexDirection:"column",
-        justifyContent:"flex-end",
+        justifyContent:{xs:"flex-start", md:"flex-end"},
         alignItems:"flex-start",
-        marginLeft:"10px"
+        marginLeft:{xs:"0", md:"10px"},
+        marginTop:{xs:"20px", md:"0"}
 }
 const googleButtonStyle = {
             width:"200px",
@@ -30,9 +28,13 @@ function SignIn(){
     const [redirect,setRedirect] = useState(false);
     const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
     const valordelContexto = useContext(context);
-    const {setUser,setIslogged} = valordelContexto;
+    const {setUser,setIslogged,Usuario,Logged,fillWishlist} = valordelContexto;
 
 
+    const boxStyle ={
+        display: "flex",
+        flexDirection:{xs:"column",md:"row"}
+}
 
     async function handleDefault(datos){
         try {
@@ -66,6 +68,21 @@ function SignIn(){
         }
         setSnackbar((prevValue)=>({...prevValue,state:false}));
     }
+
+    useEffect(()=>{
+        if(Logged){
+            const array = [];
+            console.log(Usuario.uid)
+            getUserWishlist(Usuario.uid)
+            .then((docs)=>{
+                docs.forEach(doc=>{
+                const products = doc.data().wishList;
+                fillWishlist(products);
+            })
+        })
+        .catch(error=>console.log(error));
+        }
+    },[Logged])
    
     return(
         <Box sx={boxStyle}>

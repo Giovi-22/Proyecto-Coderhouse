@@ -7,12 +7,14 @@ function CustomProvider({children}){
     const [total,setTotal] = useState(0);
     const [count,setCount] = useState(0);
     const [products, setProducts] = useState([]);
+    const [compras,setCompras] = useState([])
     const [wishList,setWishlist] = useState([]);
     const [saleId,setSaleId] = useState("");
     const [user,setUser] = useState({});
     const [isLogged,setIslogged] = useState(false);
     
     let valorDelContexto = {
+        setCompras:agregarCompras,
         addProducts: handleProducts,
         deleteProduct: handleDelete,
         addProductToWishList: addProductToWishList,
@@ -29,10 +31,15 @@ function CustomProvider({children}){
         Usuario: user,
         cuantity:count,
         wishList:wishList,
+        compras:compras,
         products: products,
         Total:total,
         saleId: saleId
             };
+    
+    function agregarCompras(compras){
+        setCompras(compras);
+    }
   
     function addProductToWishList(product){
                  const result = wishList.find(value=>value.id === product.id);

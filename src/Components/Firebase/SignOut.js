@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
 import { context } from "../../CustomProvider";
 import SnackbarDialog from "../Main/SnackbarDialog";
 import { addWishlistToCollection } from "../Utils/Utils";
@@ -41,7 +40,6 @@ useEffect(()=>{
                 updateWishlistProduct(wishlistId,wishList)
                 .then(()=>{
                     SignOutUser();
-                    setSnackbar({state:true, error:false, message:"Wishlist actualizada!",time:1000});   
                 })
                 .catch(() => {
                     setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar actualizar la wishlist",time:2000});

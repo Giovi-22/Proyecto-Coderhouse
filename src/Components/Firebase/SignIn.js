@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Link, Navigate } from "react-router-dom";
 import { context } from "../../CustomProvider";
-import { SignInWithGoogle, SignInUser, getUserWishlist} from "../Firebase/Firestore";
+import { SignInWithGoogle, SignInUser, getUserWishlist, getUserShoppinglist} from "../Firebase/Firestore";
 import GoogleIcon from '@mui/icons-material/Google';
 import SnackbarDialog from "../Main/SnackbarDialog";
 import Formulario from "../Main/Formulario";
@@ -28,7 +28,7 @@ function SignIn(){
     const [redirect,setRedirect] = useState(false);
     const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:2000});
     const valordelContexto = useContext(context);
-    const {setUser,setIslogged,Usuario,Logged,fillWishlist} = valordelContexto;
+    const {setUser,setIslogged,Usuario,Logged,fillWishlist,setCompras} = valordelContexto;
 
 
     const boxStyle ={
@@ -76,11 +76,20 @@ function SignIn(){
                 docs.forEach(doc=>{
                 const products = doc.data().wishList;
                 fillWishlist(products);
+                })
             })
-
-        })
-        .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));
-        }
+            .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));
+            console.log(Usuario.email)
+            getUserShoppinglist(Usuario.email)
+            .then(docs=>{
+                docs.forEach(doc=>{
+                    setCompras((productos)=>[...productos,doc.data().products])
+                })  
+            })
+            .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));  
+            
+    }
+        
         return function redireccionar(){
             setRedirect(false);
         }

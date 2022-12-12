@@ -68,3 +68,8 @@ export  function updateWishlistProduct(userId,wishlist){
     const documentReference = doc(wishlistCollections,userId);
     return updateDoc(documentReference,"wishList",wishlist);
 }
+
+export function getUserShoppinglist(userEmail){
+  const result = query(salesCollections,where("data.email","==",userEmail));
+  return getDocs(result);
+}

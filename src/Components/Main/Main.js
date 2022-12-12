@@ -8,7 +8,7 @@ import CheckoutContainer from "./Checkout/CheckoutContainer";
 import SignUpContainer from "../Firebase/SignUpContainer";
 import SignIn from "../Firebase/SignIn";
 import WishlistContainer from "./WishList/WishlistContainer";
-
+import Compras from "./Compras/Compras";
 
 
 function Main(){
@@ -24,6 +24,7 @@ function Main(){
                     <Route path="/formulario" element= <CheckoutContainer /> />
                     <Route path="/singup" element= <SignUpContainer /> />
                     <Route path="/signin" element= <SignIn /> />
+                    <Route path="/compras" element= <Compras /> />
                     <Route path="/wishlist" element= <WishlistContainer /> />
                     <Route path="/*" element=<p>Ruta no encontrada</p> />
                 </Routes> 

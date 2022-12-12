@@ -99,14 +99,6 @@ function CustomProvider({children}){
             updateCartCuantity(array);
             setProducts(array);
     }
-    function updateProduct(property,value,productId){
-        let array = [...products];
-        array.forEach(product=>{
-            if(product.id === productId){
-                product[property]=value;
-            }});
-            setProducts(array);
-    }
 
     function updateCart(productos){
                let arrayWish = [...productos];

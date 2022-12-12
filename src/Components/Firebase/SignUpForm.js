@@ -16,18 +16,16 @@ function SignUpForm({datos}){
     const validate = (values) =>{
         const errors = {};
         if(!values.firstName){
-                //errors.firstName = "*";
+
             }else if(values.firstName.length > 10){
                 errors.firstName ="El nombre debe tener menos de 10 caracteres"
                 }
                 if (!values.lastName) {
-                    //errors.lastName = "*";
                   } else if (values.lastName.length > 10) {
                     errors.lastName = "El apellido debe tener menos de 10 caracteres";
                   }
                 
                   if (!values.email) {
-                    //errors.email = "*";
                   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                     errors.email = "Email invalido";
                   }

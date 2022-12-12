@@ -71,16 +71,18 @@ function SignIn(){
 
     useEffect(()=>{
         if(Logged){
-            const array = [];
-            console.log(Usuario.uid)
             getUserWishlist(Usuario.uid)
             .then((docs)=>{
                 docs.forEach(doc=>{
                 const products = doc.data().wishList;
                 fillWishlist(products);
             })
+
         })
-        .catch(error=>console.log(error));
+        .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));
+        }
+        return function redireccionar(){
+            setRedirect(false);
         }
     },[Logged])
    

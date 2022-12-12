@@ -38,7 +38,6 @@ useEffect(()=>{
                     setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar guardar la wishlist",time:2000});
                 })
             }else{
-                console.log(wishlistId)
                 updateWishlistProduct(wishlistId,wishList)
                 .then(()=>{
                     SignOutUser();
@@ -48,7 +47,7 @@ useEffect(()=>{
                     setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar actualizar la wishlist",time:2000});
                 })
             }})
-        .catch(error=>console.log(error));
+        .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));
 
 }else{
             SignOutUser();

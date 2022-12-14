@@ -79,11 +79,10 @@ function SignIn(){
                 })
             })
             .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));
-            console.log(Usuario.email)
             getUserShoppinglist(Usuario.email)
             .then(docs=>{
                 docs.forEach(doc=>{
-                    setCompras((productos)=>[...productos,doc.data().products])
+                    setCompras((compras)=>[...compras,{...doc.data(),id:doc.id}])
                 })  
             })
             .catch(error=>setSnackbar({state:true,error:true,message:error.message,time:3000}));  

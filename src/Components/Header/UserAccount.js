@@ -37,7 +37,7 @@ function UserAccount({userAvatar,logoutUser}){
                         onClose={handleClose}
                 >
                 <MenuItem  component={Link} to="/compras" onClick={handleClose}>Mis Compras</MenuItem>
-                <MenuItem  component={Link} to="/wishlist" onClick={handleClose} >Favoritos</MenuItem>
+                <MenuItem  component={Link} to="/wishlist" onClick={handleClose} >Wishlist</MenuItem>
                 <MenuItem  onClick={handleLogout} >Salir</MenuItem>
                 </Menu>
         </Box>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Grid, TableCell, TableRow, Typography, useMediaQuery, useTheme } from "@mui/material";
 
 
 function Item({product}){
@@ -8,16 +8,23 @@ function Item({product}){
 
             
             return(
-                    <Box className="cart-item">
-                        <Box className="cartitem-tittle">
+                <TableRow>
+                        <TableCell >
+                                <Box className="cartitem-tittle">
                                 {isSm ? null : <img id="imagen" className="wish-image" src={product.image} alt="Cortantes impresos en 3D" />}
                                 <Typography color="primary">{product.name}</Typography>
-                        </Box>
-                        <Typography >${product.price}</Typography>
-                        <Typography >{product.cantidad}</Typography>
-                        <Typography >${product.subTotal}</Typography>
-                   </Box>
-                    
+                                </Box>
+                        </TableCell>
+                        <TableCell>
+                                <Typography >${product.price}</Typography>
+                        </TableCell>
+                        <TableCell >
+                                <Typography>{product.cantidad}</Typography>
+                        </TableCell>
+                        <TableCell >
+                                <Typography >${product.subTotal}</Typography>
+                        </TableCell>
+                </TableRow>   
             )
 
 }

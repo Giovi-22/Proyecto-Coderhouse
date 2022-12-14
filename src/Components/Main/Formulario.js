@@ -52,7 +52,7 @@ function Formulario({datos,buttonTitle,inputs=[],initialvalues={}}){
           };
   
           const formik = useFormik({
-            initialValues:{initialvalues},
+            initialValues:{...initialvalues},
             validateOnMount:true,
             validate,
             onSubmit: values=>datos(values)

@@ -8,7 +8,7 @@ import { getUserWishlist, SignOutUser, updateWishlistProduct } from "./Firestore
 function SignOut({user,close}){
     const [snackBar,setSnackbar] = useState({state:false,error:false,message:"",time:1000});
     const valordelContexto = useContext(context);
-    const {setUser,setIslogged,vaciarWishlist,wishList} = valordelContexto;
+    const {setUser,setIslogged,vaciarWishlist,wishList,vaciarCompras} = valordelContexto;
     
 
     function handleClose(){
@@ -16,6 +16,7 @@ function SignOut({user,close}){
             setIslogged(false);
             setUser({});
             vaciarWishlist();
+            vaciarCompras();
             setSnackbar((prevValue)=>({...prevValue,state:false}));
             close();
         }
@@ -40,6 +41,7 @@ useEffect(()=>{
                 updateWishlistProduct(wishlistId,wishList)
                 .then(()=>{
                     SignOutUser();
+                    setSnackbar({state:true, error:false, message:"La sesión ha finalizado",time:2000});
                 })
                 .catch(() => {
                     setSnackbar({state:true, error:true, message:"Se ha producido un error al intentar actualizar la wishlist",time:2000});

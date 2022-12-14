@@ -24,6 +24,7 @@ function CustomProvider({children}){
         updateProductCuantity:updateProductCuantity,
         vaciarCarrito:vaciarCarrito,
         vaciarWishlist:vaciarWishlist,
+        vaciarCompras:vaciarCompras,
         setSaleId: setSaleId,
         setUser: setUser,
         setIslogged:setIslogged,
@@ -81,6 +82,9 @@ function CustomProvider({children}){
 
     function vaciarWishlist(){
             setWishlist([]);
+    }
+    function vaciarCompras(){
+            setCompras([]);
     }
 
     function updateCartCuantity(productsArray){

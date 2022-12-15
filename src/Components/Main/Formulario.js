@@ -17,21 +17,21 @@ function Formulario({datos,buttonTitle,inputs=[],initialvalues={}}){
         const errors = {};
             if(Object.hasOwn(values,"firstName")){
                 if(!values.firstName){
-                    errors.firstName = "Completar campo";
+                    errors.firstName = "Nombre *";
                   }else if(values.firstName.length > 10){
                 errors.firstName ="El nombre debe tener menos de 10 caracteres"
                 }
               }
             if(Object.hasOwn(values,"lastName")){
                 if (!values.lastName) {
-                    errors.lastName = "Completar campo";
+                    errors.lastName = "Apellido *";
                   } else if (values.lastName.length > 10) {
                     errors.lastName = "El apellido debe tener menos de 10 caracteres";
                   }
               }
             if(Object.hasOwn(values,"email")){
                   if (!values.email) {
-                    errors.email = "Completar campo";
+                    errors.email = "Email *";
                   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                     errors.email = "Email invalido";
                   }
@@ -43,7 +43,7 @@ function Formulario({datos,buttonTitle,inputs=[],initialvalues={}}){
                   }}
             if(Object.hasOwn(values,"password")){
                     if(!values.password){
-                        errors.password="Completar password"
+                        errors.password="Password *"
                     } else if(values.password.length < 6){
                       errors.password = "La contraseña debe contener 6 caracteres como mínimo"
                   }

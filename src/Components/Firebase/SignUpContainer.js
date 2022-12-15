@@ -4,7 +4,7 @@ import {context} from "../../CustomProvider";
 import { Navigate } from "react-router-dom";
 import SnackbarDialog from "../Main/SnackbarDialog";
 import Formulario from "../Main/Formulario";
-import { checkoutForm } from "../Utils/Utils";
+import { signupForm } from "../Utils/Utils";
 
 const initialValues = {firstName:"",lastName:"",email:"",confirm_email:"",password:""};
 function SignUpContainer(){
@@ -49,7 +49,7 @@ function SignUpContainer(){
 
     return (
                 <>
-                    <Formulario inputs={checkoutForm} buttonTitle="REGISTRARSE" datos={registrar} initialvalues={initialValues}/>
+                    <Formulario inputs={signupForm} buttonTitle="REGISTRARSE" datos={registrar} initialvalues={initialValues}/>
                     <SnackbarDialog open={snackBar.state} setClose={handleClose} message={snackBar.message} time={snackBar.time} />
                     {redirect && <Navigate to="/productos" />}
                 </>

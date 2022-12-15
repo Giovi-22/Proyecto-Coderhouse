@@ -9,7 +9,7 @@ const formStyle={
     justifyContent:"space-between",
     alignContent:"center",
     width:"300px",
-    marginTop:"10px"
+    marginTop:"10px",
 };
 
 function SignUpForm({datos}){
@@ -38,6 +38,7 @@ function SignUpForm({datos}){
                 
                   return errors;
             };
+
     const formik = useFormik({
             initialValues:{
                 email:"",

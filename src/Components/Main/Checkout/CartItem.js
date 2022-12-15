@@ -22,7 +22,7 @@ function CartItem({product,onDelete, onCount,isWishlist = false}){
                                 <Typography color="primary">{product.name}</Typography>
                         </Box>
                         <Typography >${product.price}</Typography>
-                        {isWishlist ? null : <Typography ><ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad} modo="column"/></Typography>}
+                        {isWishlist ? null : <ItemCount stock={product.stock} onCount={handleCount} cuantity={product.cantidad} modo="column"/>}
                         {isWishlist ? null : <Typography >${product.subTotal}</Typography>}
                         <IconButton onClick={handleClick} color="primary"><DeleteIcon /></IconButton>
                    </Box>

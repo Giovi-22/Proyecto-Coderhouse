@@ -1,6 +1,6 @@
 #                                                                       CB3DESIGN
 #### DOMINIO
-https://cb3desing-store.vercel.app/
+https://cb3desing-store-3szxl73ze-giovi-22.vercel.app/
 
 CB3DESIGN es un E-commerce destinado a la venta de productos impresos en 3D para el rubro de la pastelería. 
 

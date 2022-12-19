@@ -16,7 +16,7 @@ function CartContainer(){
 
             return (
 
-                    <Cart onDelete={handleDelete} onCount={handleCount} total={Total} products={products} vaciarCarrito={()=>vaciarCarrito()}/>
+                <Cart onDelete={handleDelete} onCount={handleCount} total={Total} products={products} vaciarCarrito={()=>vaciarCarrito()}/>
 
             );
 

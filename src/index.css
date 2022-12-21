@@ -13,7 +13,7 @@ body {
 .main{
   min-height: 100vh;
   width: 100%;
-  padding: 110px 0 0 0;
+  padding: 100px 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,11 +33,10 @@ body {
   width: 100%;
   z-index: 10;
   grid-template-columns: [logo]100px [navLinks]auto [cartWidget]70px;
-  grid-template-rows: 30px 80px;
+  grid-template-rows: 25px 75px;
   grid-template-areas: 
   "authentication authentication authentication "
   "logo links cart";
-  column-gap: 10px;
   align-items: center;
   box-shadow: 1px 5px 5px -4px #89999E, -9px 10px 4px -9px #89999E;
   background-color: white;
@@ -75,7 +74,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-content: center;
-  background-image: url(C:\Users\Giovi\Desktop\REACT-CODERHOUSE\Proyecto\coderapp\public\Images\background-v2.jpg);
+  background-image: url(../public/Images/background-v2.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
   height: 100vh;

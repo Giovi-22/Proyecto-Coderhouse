@@ -51,7 +51,7 @@ function App(){
                 <ThemeProvider theme={theme} >
                     <NavBar />
                     <Main />
-                    <Footer />
+                    <Footer /> 
                 </ThemeProvider>
             </BrowserRouter>
         </CustomProvider>

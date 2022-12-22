@@ -19,9 +19,9 @@ function Bienvenidos(){
 
             <Box className="bienvenidos">
                 <Box sx={boxStyle}>
-                    <Typography color="secondary" variant={sm ? "subtitle1" : "h5"}>BIENVENIDOS</Typography>
-                    <Typography color="secondary" variant={sm ? "h3" : "h1"}>CB3DESIGN</Typography>
-                    <Typography color="secondary" align="center" variant={sm ? "subtitle1" : "h5"}>Venta de accesorios para repostería</Typography>
+                    <Typography color="secondary" variant={sm ? "h5" : "h5"}>BIENVENIDOS</Typography>
+                    <Typography color="secondary" variant="h1">CB3DESIGN</Typography>
+                    <Typography color="secondary" align="center" variant={sm ? "h5" : "h5"}>Venta de accesorios para repostería</Typography>
                 </Box>
             </Box>
 
